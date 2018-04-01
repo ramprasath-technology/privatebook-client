@@ -1,0 +1,59 @@
+<div id="header_wrapper">
+  <div id="header">
+
+    <div>
+      <img src="../../assets/images/landing/Mascot.png" class="logo-img" style="float:left"><span class="brand"><img src="../../assets/images/landing/PrivateBook.png"></span>
+    </div>
+
+    <!--<li id="sitename"><img src="Mascot.png" style="float:left"><a href="http://talkerscode.com">PrivateBook</a></li>-->
+    
+
+    <form class="signup-form"  (ngSubmit)="loginUser(loginForm)" #loginForm="ngForm">
+      <input type="text" name="email" ngModel placeholder="Email" class="form-input">
+      <input type="password" name="password" ngModel placeholder="Password" class="form-input">
+      <button type="submit" name="login" class="login">
+        Login
+      </button>
+      <p class="para">
+        <a class="password-link" href="">Forgot Password?</a> </p>
+    </form>
+  </div>
+</div>
+
+<div id="wrapper">
+  <div id="div1">
+    <img src="../../assets/images/landing/main.jpg" class="background" />
+  </div>
+
+  <div id="div2">
+    <br>
+    <h1 style="font-size:20px; font-style:italic;color:#660000 "> Tired of juggling between applications?</h1>
+    <p><b> Manage everything under one roof!</b></p>
+    <!--<p> Create personalized dashboards</p>-->
+    <h3 style="font-size:20px; ">Sign Up Today</h3>
+    <form class="signup-form" (ngSubmit)="submitUser(signupForm)" #signupForm="ngForm">
+      <input type="text" placeholder="First Name" ngModel name="firstName" class="form-input" required/>
+      <input type="text" placeholder="Last Name" ngModel name="lastName" class="form-input" required/>
+      <input type="email" placeholder="Email" ngModel name="email" class="form-input" required/>
+      <input type="password" placeholder="Password" ngModel name="password" class="form-input" required/>
+      <button type="submit" class="create-button ">
+      Create Account
+    </button>
+    </form>
+    <!--
+    <form class="signup-form ">
+      <input type="text " placeholder="First Name " id="firstname " class="form-input">
+      <input type="text " placeholder="Last Name " id="surname " class="form-input ">
+      <input type="text " placeholder="Email address " class="form-input ">
+      <input type="password " placeholder="Password " class="form-input ">
+      <input type="submit " value="Create account " class="create-button ">
+    </form>
+    -->
+  </div>
+
+</div>
+<div id="footer_wrapper ">
+  <footer class="footer1 ">
+    <p>&copy Designed by Team #11</p>
+  </footer>
+</div>

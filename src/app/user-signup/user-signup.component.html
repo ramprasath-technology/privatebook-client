@@ -1,5 +1,5 @@
 <div>
-  <form #signup="ngForm" (ngSubmit)="submitUser()" #signupForm>
+  <form (ngSubmit)="submitUser(signupForm)" #signupForm="ngForm">
     <input type="text" ngModel name="firstName" required/>
     <input type="text" ngModel name="lastName" required/>
     <input type="email" ngModel name="email" required/>

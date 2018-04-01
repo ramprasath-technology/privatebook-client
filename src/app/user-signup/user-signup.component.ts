@@ -1,17 +1,24 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-user-signup',
+  providers: [UserService],
   templateUrl: './user-signup.component.html',
   styleUrls: ['./user-signup.component.css']
 })
 export class UserSignupComponent implements OnInit {
-@ViewChild("signupForm") signup : ElementRef;
-  constructor() { }
 
-  submitUser(){
-    console.log('form values');
-    console.log(this.signup);
+  constructor(private userService: UserService) { }
+
+  submitUser(form : NgForm){
+    this.userService.createUser(form.value)
+      .subscribe(
+        (response) => { console.log(response)},
+        (error) => {}
+      );
   }
 
   ngOnInit() {

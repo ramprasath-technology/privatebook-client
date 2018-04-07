@@ -26,6 +26,12 @@ isModalOpen : boolean = false;
 
    }
 
+   openModal(){
+    this.isModalOpen = true;
+  }
+   saveChanges(){
+     this.isModalOpen = false;
+   }
    submitEvent(){
 
    }

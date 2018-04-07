@@ -1,7 +1,41 @@
 <app-navbar></app-navbar>
 
-<div *ngIf="isModalOpen">
-  <dialog class="eventModal">
+<!--<div *ngIf="isModalOpen">-->
+  
+<div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="eventModalLabel">Create Event</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="submitEvent()" ngNativeValidate>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Event Name</label>
+            <input type="text" class="form-control" name="eventName" placeholder="Max 25 characters" maxlength="25" required>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Event Date</label>
+            <input type="date" class="form-control" name="eventDate" required/>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Event Time</label>
+            <input type="time" class="form-control" name="eventTime" required/>
+          </div>
+          <button type="submit" class="btn btn-primary" (click)="saveChanges()">Submit</button>
+          <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </form>
+      </div>
+      
+
+  </div>
+  </div>
+
+  <!--</div>-->
+  <!--<dialog class="eventModal">
     <form (ngSubmit)="submitEvent()" ngNativeValidate>
       <h5>
         Enter event details
@@ -21,12 +55,12 @@
       <button type="submit" class="btn btn-primary" >Submit</button>
       <button class="btn btn-danger" (click)="toggleModal()">Cancel</button>
     </form>
-  </dialog>
+  </dialog>-->
 </div>
 
 <div class="placement">
   <div class="action-row row float-right">
-    <button class="btn btn-primary" (click)="toggleModal()">
+    <button class="btn btn-primary" data-toggle="modal" data-target="#eventModal">
   Add new event
   </button>
   </div>
@@ -34,7 +68,7 @@
     <thead>
       <tr>
         <th class="w-10 text-center">#</th>
-        <th class="w-50 text-center">Todo</th>
+        <th class="w-50 text-left">Todo</th>
         <th class="w-20 text-center">Date</th>
         <th class="w-20 text-center">Time</th>
       </tr>

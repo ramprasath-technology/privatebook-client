@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { AppComponent } from './app.component';
 import { UserSignupComponent } from './user-signup/user-signup.component';
@@ -14,6 +16,9 @@ import { UserService } from './services/user.service';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { HeaderComponent } from './header/header.component';
+import { ToDoComponent } from './to-do/to-do.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { TodoModalComponent } from './todo-modal/todo-modal.component';
 
 
 
@@ -26,13 +31,18 @@ import { HeaderComponent } from './header/header.component';
     FeatureListComponent,
     NonexistentFeatureListComponent,
     LandingPageComponent,
-    HeaderComponent
+    HeaderComponent,
+    ToDoComponent,
+    NavbarComponent,
+    TodoModalComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule.forRoot(),
+    AngularFontAwesomeModule
   ],
   
   providers: [UserService],

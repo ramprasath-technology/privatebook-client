@@ -4,11 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { FeatureListComponent } from './feature-list/feature-list.component';
+import { ToDoComponent } from './to-do/to-do.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
   { path: 'landing', component: LandingPageComponent },
-  { path: 'featurelist/:userId', component: FeatureListComponent }
+  { path: 'featurelist/:userId', component: FeatureListComponent },
+  { path: 'todo', component: ToDoComponent}
 ];
 
 @NgModule({

@@ -6,6 +6,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
+
 import { AppComponent } from './app.component';
 import { UserSignupComponent } from './user-signup/user-signup.component';
 import { UserSigninComponent } from './user-signin/user-signin.component';
@@ -42,7 +44,8 @@ import { TodoModalComponent } from './todo-modal/todo-modal.component';
     HttpModule,
     AppRoutingModule,
     NgbModule.forRoot(),
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    Ng4LoadingSpinnerModule.forRoot()
   ],
   
   providers: [UserService],

@@ -4,3 +4,8 @@
 .action-row{
     padding-bottom: 10px;
 }
+
+.welcomeMessage{
+    text-align: center;
+    margin: 5%;
+}

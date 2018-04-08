@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
   { path: 'landing', component: LandingPageComponent },
   { path: 'featurelist/:userId', component: FeatureListComponent },
-  { path: 'todo', component: ToDoComponent}
+  { path: 'todo/:userId', component: ToDoComponent}
 ];
 
 @NgModule({

@@ -13,6 +13,7 @@ import { FeatureServiceService } from '../services/feature-service.service';
 })
 export class LandingPageComponent implements OnInit {
 
+accountExists: boolean = false;
   constructor(private userService: UserService, private router: Router, private featureService: FeatureServiceService) { }
 
   submitUser(form : NgForm){
@@ -52,6 +53,18 @@ export class LandingPageComponent implements OnInit {
 
         }
       )
+  }
+
+  showSignIn(){
+    this.accountExists = true;
+  }
+
+  showSigninForm(accountExists){
+    this.accountExists = accountExists;
+  }
+
+  showSignUp(){
+    this.accountExists = false;
   }
 
   ngOnInit() {

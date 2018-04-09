@@ -15,7 +15,6 @@ userId: number;
 
   loadGoals(){
     this.commonService.currentUserId.subscribe(userId => this.userId = userId);
-    alert(this.commonService.getUser());
     //this.router.navigate(['/todo',this.userId]);
   }
 

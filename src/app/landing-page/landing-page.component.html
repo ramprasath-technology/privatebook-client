@@ -1,59 +1,24 @@
-<div id="header_wrapper">
-  <div id="header">
-
-    <div>
+<!--<div>
       <img src="../../assets/images/landing/Mascot.png" class="logo-img" style="float:left"><span class="brand"><img src="../../assets/images/landing/PrivateBook.png"></span>
+    </div>-->
+
+<!--<li id="sitename"><img src="Mascot.png" style="float:left"><a href="http://talkerscode.com">PrivateBook</a></li>-->
+<!--<div class="landing-header">   
+<app-landing-header></app-landing-header>
+ </div>-->
+<app-landing-header (signinClicked)="showSigninForm($event)"></app-landing-header>
+<div class="container-fluid landing-body">
+  <div class="row">
+    <div class="main-img-container align-self-center">
+      <img class="main-img " src="../../assets/images/landing/main.jpg" alt="Get all your stuff done in one place" />
     </div>
-
-    <!--<li id="sitename"><img src="Mascot.png" style="float:left"><a href="http://talkerscode.com">PrivateBook</a></li>-->
-    
-
-    <form class="signup-form"  (ngSubmit)="loginUser(loginForm)" #loginForm="ngForm">
-      <input type="text" name="email" ngModel placeholder="Email" class="form-input">
-      <input type="password" name="password" ngModel placeholder="Password" class="form-input">
-      <button type="submit" name="login" class="login">
-        Login
-      </button>
-      <p class="para">
-        <a class="password-link" href="" style="color:white; float:right; margin-right: 3px;">Forgot Password?</a> </p>
-    </form>
+    <div class="form-container">
+      <div class="account-form">
+        <app-user-signup *ngIf="!accountExists"></app-user-signup>
+        <app-user-signin *ngIf="accountExists"></app-user-signin>
+        <span *ngIf="!accountExists">Already a member? <span class="anchor" (click)="showSignIn()">Sign In</span></span>
+        <span *ngIf="accountExists">New member? <span class="anchor" (click)="showSignUp()">Sign Up</span></span>
+      </div>
+    </div>
   </div>
-</div>
-
-<div id="body_newwrapper">
-  <div id="div1">
-    <img src="../../assets/images/landing/main.jpg" class="background" />
-  </div>
-
-  <div id="div2">
-    <br>
-    <h1 style="font-size:20px; font-style:italic;color:#660000 "> Tired of juggling between applications?</h1>
-    <p><b> Manage everything under one roof!</b></p>
-    <!--<p> Create personalized dashboards</p>-->
-    <h3 style="font-size:20px; ">Sign Up Today</h3>
-    <form class="signup-form" (ngSubmit)="submitUser(signupForm)" #signupForm="ngForm">
-      <input type="text" placeholder="First Name" ngModel name="firstName" class="form-input" required/>
-      <input type="text" placeholder="Last Name" ngModel name="lastName" class="form-input" required/>
-      <input type="email" placeholder="Email" ngModel name="email" class="form-input" required/>
-      <input type="password" placeholder="Password" ngModel name="password" class="form-input" required/>
-      <button type="submit" class="create-button ">
-      Create Account
-    </button>
-    </form>
-    <!--
-    <form class="signup-form ">
-      <input type="text " placeholder="First Name " id="firstname " class="form-input">
-      <input type="text " placeholder="Last Name " id="surname " class="form-input ">
-      <input type="text " placeholder="Email address " class="form-input ">
-      <input type="password " placeholder="Password " class="form-input ">
-      <input type="submit " value="Create account " class="create-button ">
-    </form>
-    -->
-  </div>
-
-</div>
-<div id="footer_wrapper" style="position: fixed;bottom: 0;left: 0;">
-  <footer class="footer1">
-    <p>&copy; Designed by Team #11</p>
-  </footer>
 </div>

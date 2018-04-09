@@ -20,7 +20,8 @@ import { AppRoutingModule } from './/app-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { ToDoComponent } from './to-do/to-do.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { TodoModalComponent } from './todo-modal/todo-modal.component';
+import { LandingHeaderComponent } from './landing-header/landing-header.component';
+
 
 
 
@@ -36,7 +37,7 @@ import { TodoModalComponent } from './todo-modal/todo-modal.component';
     HeaderComponent,
     ToDoComponent,
     NavbarComponent,
-    TodoModalComponent
+    LandingHeaderComponent
   ],
   imports: [
     BrowserModule,

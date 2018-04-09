@@ -35,16 +35,10 @@ export class FeatureListComponent implements OnInit {
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
        this.userId = +params['userId'];
-       this.setUserId();
        this.getFeaturesForUser();
        
   });
 }
-
-setUserId(){
-  this.commonService.setUser(this.userId);
-    //this.commonService.changeMessage(this.userId);
-  }
 
 }
 

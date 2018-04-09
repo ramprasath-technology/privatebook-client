@@ -1,0 +1,40 @@
+.landing-header{
+    height: 10vh;
+    margin: 0;
+    width:100%;
+}
+
+.container-fluid{
+    background-color: lightblue;
+}
+
+.mascot-img{
+    width: 75px;
+    height: auto;
+}
+
+.mascot-img-container{
+    display: inline-block;
+}
+
+.signin-button-container{
+    display: inline-block;
+    text-align: right;
+    margin: 0;
+    padding: 0;
+}
+
+.header-signin-button{
+    padding: 5px;
+}
+
+.brand-font{
+    font-family: 'Comfortaa', cursive;
+    font-weight: bold;
+}
+
+@media screen and (min-width: 768px){
+    .brand-font{
+        font-size: 1.5em;
+    }
+}

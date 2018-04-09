@@ -1,0 +1,20 @@
+<div class="container-fluid">
+  <div class="row col-xs-12 landing-header">
+    <div class="w-50 mascot-img-container  align-self-center">
+      <img class="mascot-img" src="../../assets/images/landing/Mascot.png">
+      <span class="brand-font">
+        PrivateBook
+      </span>
+    </div>
+    <div *ngIf="accountExists" class="w-50 signin-button-container align-self-center">
+      <button class="btn btn-primary header-signin-button" (click)="emitEvent()">
+        Sign In
+      </button>
+    </div>
+        <div *ngIf="!accountExists" class="w-50 signin-button-container align-self-center">
+      <button class="btn btn-primary header-signin-button" (click)="emitEvent()">
+        Sign Up
+      </button>
+    </div>
+  </div>
+</div>

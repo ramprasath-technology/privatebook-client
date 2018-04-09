@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { Common } from '../models/common';
 
@@ -16,7 +16,7 @@ export class FeatureListComponent implements OnInit {
   private sub: any;
   private userId: number;
 
-  constructor(private route: ActivatedRoute, private featureService : FeatureServiceService, private commonService: CommonService) { }
+  constructor(private route: ActivatedRoute, private featureService : FeatureServiceService, private commonService: CommonService, private router: Router) { }
 
   getFeaturesForUser(){
     this.featureService.getFeaturesForUser(this.userId)
@@ -30,6 +30,10 @@ export class FeatureListComponent implements OnInit {
 
         }
       )
+  }
+
+  redirect(feature){
+    this.router.navigate([`/${feature}`,this.userId]);
   }
 
   ngOnInit() {

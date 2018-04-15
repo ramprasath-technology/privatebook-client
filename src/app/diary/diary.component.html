@@ -1,10 +1,21 @@
+<app-navbar></app-navbar>
+<div class="alert alert-success text-center" role="alert" *ngIf="showSuccess">
+  {{successMessage}}
+  <span class="back-link" (click)="goBack()">View your precious memories.</span>
+</div>
+<div class="alert alert-danger text-center" role="alert" *ngIf="showError">
+  {{errorMessage}}
+</div>
 <div class="diary-editor">
   <ckeditor [(ngModel)]="content">
   </ckeditor>
 </div>
 <div class="text-center">
-  <button class="btn btn-primary" (click)="addEntry()">
+  <button class="btn btn-primary" (click)="addEntry()" *ngIf="save">
    Save
+ </button>
+ <button class="btn btn-primary" (click)="editEntry()" *ngIf="!save">
+   Update
  </button>
   <button class="btn btn-secondary" (click)="resetEntry()">
    Reset

@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'featurelist/:userId', component: FeatureListComponent },
   { path: 'todo/:userId', component: ToDoComponent },
   { path: 'event/:userId', component: EventComponent },
-  { path: 'diary/:userId', component: DiaryComponent},
+  { path: 'diary/:userId/:entryId', component: DiaryComponent},
   { path: 'diarylist/:userId', component: DiaryListComponent}
 ];
 

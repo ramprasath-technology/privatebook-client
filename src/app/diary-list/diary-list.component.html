@@ -1,11 +1,31 @@
+<app-navbar></app-navbar>
 <div class="placement">
   <div class="action-row row float-right">
     <button class="btn btn-primary" (click)="openEditor()">
   Add new entry
   </button>
   </div>
-  
+  <br/>
+  <br/>
+  <main>
+    <div *ngFor="let entry of entriesToDisplay">
+      <div class="diary-entry">
+        <details class="diary-detail">
+          <summary class="diary-summary">{{getDatePart(entry.date)}}
+            <span class="pull-right" (click)="editEntry(entry.entryId)">
+              Edit
+            </span>
+          </summary>
+          <div [innerHTML]="entry.entry"></div>
+        </details>
+      </div>
+    </div>
+  </main>
   <div class="float-right">
     <ngb-pagination [collectionSize]="totalLength" (pageChange)="changePage($event)" [(page)]="page" [maxSize]="3" [boundaryLinks]="true"></ngb-pagination>
   </div>
+
+  <!--<div class="float-right">
+    <ngb-pagination [collectionSize]="totalLength" (pageChange)="changePage($event)" [(page)]="page" [maxSize]="3" [boundaryLinks]="true"></ngb-pagination>
+  </div>-->
 </div>

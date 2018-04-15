@@ -9,3 +9,16 @@
     text-align: center;
     margin: 5%;
 }
+
+.diary-summary{
+    height: 25px;
+    background-color: lightblue;
+}
+
+.diary-detail{
+    border: 1px solid black;
+}
+
+.diary-entry{
+    padding-bottom: 10px;
+}

@@ -1,0 +1,15 @@
+.placement{
+    margin: 5%;
+}
+.action-row{
+    padding-bottom: 10px;
+}
+
+.welcomeMessage{
+    text-align: center;
+    margin: 5%;
+}
+
+.element-display{
+    display: inline-block;
+}

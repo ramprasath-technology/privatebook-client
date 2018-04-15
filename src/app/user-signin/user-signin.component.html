@@ -1,6 +1,7 @@
 <h2>
   Sign In
 </h2>
+<p class="errorMessage" *ngIf="showErrorMessage">{{errorMessage}}</p>
 <form (ngSubmit)="loginUser(signinForm)" #signinForm="ngForm" ngNativeValidate>
   <div class="form-group">
     <label for="email">Email</label>

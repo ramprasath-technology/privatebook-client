@@ -1,0 +1,12 @@
+<div class="diary-editor">
+  <ckeditor [(ngModel)]="content">
+  </ckeditor>
+</div>
+<div class="text-center">
+  <button class="btn btn-primary" (click)="addEntry()">
+   Save
+ </button>
+  <button class="btn btn-secondary" (click)="resetEntry()">
+   Reset
+ </button>
+</div>

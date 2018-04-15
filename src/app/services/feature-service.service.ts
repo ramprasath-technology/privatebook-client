@@ -18,4 +18,14 @@ export class FeatureServiceService {
     return this.http.get(url);
   }
 
+  removeFeature(featureToRemove: any){
+    var url =  `${Common.BASE_API_URL}api/UserFeatureMappings/UserFeatureToRemove`;
+    return this.http.post(url, featureToRemove);
+  }
+
+  addFeature(featureToAdd: any){
+    var url =  `${Common.BASE_API_URL}api/UserFeatureMappings/UserFeatureToAdd`;
+    return this.http.post(url, featureToAdd);
+  }
+
 }

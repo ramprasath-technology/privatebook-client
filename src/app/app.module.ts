@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { CKEditorModule } from 'ng2-ckeditor';
 
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 
@@ -21,6 +22,11 @@ import { HeaderComponent } from './header/header.component';
 import { ToDoComponent } from './to-do/to-do.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LandingHeaderComponent } from './landing-header/landing-header.component';
+import { StockComponent } from './stock/stock.component';
+import { EventComponent } from './event/event.component';
+import { DiaryListComponent } from './diary-list/diary-list.component';
+import { DiaryComponent } from './diary/diary.component';
+
 
 
 
@@ -37,7 +43,11 @@ import { LandingHeaderComponent } from './landing-header/landing-header.componen
     HeaderComponent,
     ToDoComponent,
     NavbarComponent,
-    LandingHeaderComponent
+    LandingHeaderComponent,
+    StockComponent,
+    EventComponent,
+    DiaryListComponent,
+    DiaryComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +56,8 @@ import { LandingHeaderComponent } from './landing-header/landing-header.componen
     AppRoutingModule,
     NgbModule.forRoot(),
     AngularFontAwesomeModule,
-    Ng4LoadingSpinnerModule.forRoot()
+    Ng4LoadingSpinnerModule.forRoot(),
+    CKEditorModule
   ],
   
   providers: [UserService],

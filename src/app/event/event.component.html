@@ -1,0 +1,99 @@
+<app-navbar></app-navbar>
+
+<div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="eventModalLabel">Create Event</h5>
+        <button type="button" class="close" data-dismiss="modal" (click)="closeModal()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-success" role="alert" *ngIf="showSuccess">
+          {{successMessage}}
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="showError">
+          {{errorMessage}}
+        </div>
+        <form (ngSubmit)="saveEvent(eventForm)" #eventForm="ngForm" ngNativeValidate>
+          <div class="form-group">
+            <label for="eventName">Event Name</label>
+            <input type="text" class="form-control" name="eventName" ngModel placeholder="Max 50 characters" maxlength="50" required
+            />
+
+          </div>
+          <div class="form-group">
+            <label for="eventDescription">Event Description</label>
+            <textarea class="form-control" name="eventDescription" ngModel placeholder="Max 500 characters" maxlength="500" required>
+            </textarea>
+          </div>
+          <div class="form-group">
+            <label for="eventDate">Event Date</label>
+            <input type="date" class="form-control" name="eventDate" ngModel placeholder="Enter event date" required />
+          </div>
+          <div class="form-group">
+            <label for="eventTime">Event Time</label>
+            <input type="time" class="form-control" name="eventTime" ngModel placeholder="Enter event time" required />
+          </div>
+          <button type="submit" class="btn btn-primary">Save Event</button>
+          <button class="btn btn-secondary" (click)="closeModal()" data-dismiss="modal">Close</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<ng4-loading-spinner> </ng4-loading-spinner>
+
+<div *ngIf="eventsToDisplay.length == 0" class="welcomeMessage">
+  <div>
+    Get started by adding a event!
+  </div>
+  <div>
+    <button class="btn btn-primary" data-toggle="modal" data-target="#eventModal">
+  Add new event
+  </button>
+  </div>
+</div>
+
+<div class="placement" *ngIf="eventsToDisplay.length > 0">
+  <div class="action-row row float-right">
+    <button class="btn btn-primary" data-toggle="modal" data-target="#eventModal">
+  Add new event
+  </button>
+  </div>
+  <br/>
+  <br/>
+  <div class="action-row row float-right">
+    <form (ngSubmit)="searchEvents(searchForm)" #searchForm="ngForm" ngNativeValidate>
+      <input class="" type="date" placeholder="Start Date" name="startDate" ngModel required/>
+      <input class="" type="date" placeholder="End Date" name="endDate" ngModel required/>
+      <button class="" type="submit">
+      Search
+    </button>
+    </form>
+  </div>
+  <table class=" table table-hover">
+    <thead>
+      <tr>
+        <th class="w-10 text-center">#</th>
+        <th class="w-20 text-left">Event Title</th>
+        <th class="w-50 text-left">Event Description</th>
+        <th class="w-20 text-center">Event Time</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let event of eventsToDisplay">
+      <tr>
+        <td class="text-center">{{event.eventNumber}}</td>
+        <td class="text-left">{{event.eventName}}</td>
+        <td class="text-left">{{event.eventDescription}}</td>
+        <td class="text-center">{{event.time}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="float-right">
+    <ngb-pagination [collectionSize]="totalLength" (pageChange)="changePage($event)" [(page)]="page" [maxSize]="3" [boundaryLinks]="true"></ngb-pagination>
+  </div>
+</div>

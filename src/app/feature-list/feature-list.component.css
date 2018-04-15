@@ -1,27 +1,47 @@
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.feature-flex-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.feature-selection{
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+
 @media screen and (max-width: 767px){
-    .feature-card{
-        width: 80%;
-        margin: 0 auto;
-        padding-top: 20px;
-       /* padding-left: 20px;*/
+    .flex-item{
+        flex-basis: 80%;
     }
+    .feature-selection{
+    width: 80%;
+    margin: auto;
+}
 }
 
 @media screen and (min-width: 768px){
-    .feature-card{
-        width: 45%;
-        padding-top: 20px;
-        display: inline-block;
-        /*padding-left: 20px;*/
+    .flex-item{
+        flex-basis: 30%;
     }
-
-    .features-container{
-        align-self: center;
-        max-width: 100%;
-        margin-left: 10%;
+    .card{
+        height: 350px;
     }
+    .feature-selection{
+    width: 96.500000000000000000000%;
+    margin: auto;
+}
 }
 
 .card{
     cursor: pointer;
 }
+

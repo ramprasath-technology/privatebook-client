@@ -1,0 +1,11 @@
+<div class="placement">
+  <div class="action-row row float-right">
+    <button class="btn btn-primary" (click)="openEditor()">
+  Add new entry
+  </button>
+  </div>
+  
+  <div class="float-right">
+    <ngb-pagination [collectionSize]="totalLength" (pageChange)="changePage($event)" [(page)]="page" [maxSize]="3" [boundaryLinks]="true"></ngb-pagination>
+  </div>
+</div>

@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 
 import { Event } from '../models/event';
 import { Common } from '../models/common';
+import { EventSearchTerms } from '../models/event-search-terms';
 
 
 @Injectable()
@@ -29,6 +30,13 @@ export class EventService {
     let completeUrl = `${url}api/events/${eventId}`;
 
     return this.http.delete(completeUrl);
+  }
+
+  searchEvent(searchTerms : EventSearchTerms){
+    let url = Common.BASE_API_URL;
+    let completeUrl = `${url}api/Events/search/${searchTerms.startDate}/${searchTerms.endDate}/${searchTerms.userId}`;
+
+    return this.http.get(completeUrl);
   }
 
 }

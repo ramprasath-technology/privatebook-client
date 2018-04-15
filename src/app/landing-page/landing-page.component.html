@@ -16,8 +16,8 @@
       <div class="account-form">
         <app-user-signup *ngIf="!accountExists"></app-user-signup>
         <app-user-signin *ngIf="accountExists"></app-user-signin>
-        <span *ngIf="!accountExists">Already a member? <span class="anchor" (click)="showSignIn()">Sign In</span></span>
-        <span *ngIf="accountExists">New member? <span class="anchor" (click)="showSignUp()">Sign Up</span></span>
+        <!--<span *ngIf="!accountExists">Already a member? <span class="anchor" (click)="showSignIn()">Sign In</span></span>
+        <span *ngIf="accountExists">New member? <span class="anchor" (click)="showSignUp()">Sign Up</span></span>-->
       </div>
     </div>
   </div>

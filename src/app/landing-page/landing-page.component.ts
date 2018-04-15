@@ -16,44 +16,9 @@ export class LandingPageComponent implements OnInit {
 accountExists: boolean = false;
   constructor(private userService: UserService, private router: Router, private featureService: FeatureServiceService) { }
 
-  submitUser(form : NgForm){
-    this.userService.createUser(form.value)
-      .subscribe(
-        (response) => { 
-          if(response.status === 200 || response.status === 201){
-            let data = response.json();
-            this.featureService.createFeaturesForUser(data.userId)
-              .subscribe(
-                (response) => {
-                  if(response.status === 200){
-                    this.router.navigate(['/featurelist',data.userId]);
-                  }
-                },
-                (error) => {
+  
 
-                }
-              );          
-          }
-        },
-        (error) => {}
-      );
-  }
-
-  loginUser(form: NgForm){
-    this.userService.loginUser(form.value)
-      .subscribe(
-        (response) => {
-          if(response.status === 200){
-            let data = response.json();
-            if(data >= 0)
-              this.router.navigate(['/featurelist',data]);
-          }
-        },
-        (error) => {
-
-        }
-      )
-  }
+  
 
   showSignIn(){
     this.accountExists = true;

@@ -1,3 +1,107 @@
-<p>
-  stock works!
-</p>
+<app-navbar></app-navbar>
+
+<div class="modal fade" id="stockModal" tabindex="-1" role="dialog" aria-labelledby="stockModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="stockModalLabel">Create Stock</h5>
+        <button type="button" class="close" data-dismiss="modal" (click)="closeModal()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-success" role="alert" *ngIf="showSuccess">
+          {{successMessage}}
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="showError">
+          {{errorMessage}}
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="showExists">
+          {{existsMessage}}
+        </div>
+        <form (ngSubmit)="addStockForUser(stockForm)" #stockForm="ngForm" ngNativeValidate>
+          <div class="form-group">
+            <label for="stockSymbol">Stock Symbol</label>
+            <input type="text" class="form-control" name="stockSymbol" ngModel placeholder="Enter stock symbol" maxlength="5" required />
+          </div>
+          <button type="submit" class="btn btn-primary">Save Stock</button>
+          <button class="btn btn-secondary" (click)="closeModal()" data-dismiss="modal">Close</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<ng4-loading-spinner> </ng4-loading-spinner>
+
+<div *ngIf="stocksToDisplay.length == 0" class="welcomeMessage">
+  <div> 
+   Get started by adding a stock!
+  </div>
+  <div>
+  <button class="btn btn-primary" data-toggle="modal" data-target="#stockModal">
+  Add new stock
+  </button>
+  </div>
+</div>
+
+<div class="placement" *ngIf="stocksToDisplay.length > 0">
+  <div class="action-row row float-right">
+    <button class="btn btn-primary" data-toggle="modal" (click)="refresh()">
+  Refresh
+  </button>
+  &nbsp;&nbsp;
+    <button class="btn btn-primary" data-toggle="modal" data-target="#stockModal">
+  Add new stock
+  </button>
+  </div>
+  <br/>
+  <br/>
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="text-center">Stock Details</th>
+        <!--<th class="w-10 text-center">Current Price</th>
+        <th class="w-10 text-center">Today's Low</th>
+        <th class="w-10 text-center">Today's High</th>
+        <th class="w-10 text-center">Remove</th>-->
+      </tr>
+    </thead>
+    <tbody *ngFor="let stock of stocksToDisplay">
+      <tr>
+        <td>
+          <details>
+            <summary>
+              {{stock.symbol}}
+              <span class="pull-right" (click)="deleteStock(stock.stockMappingId)">
+                Del
+              </span>
+            </summary>
+            <p>
+              <b>Current Price:</b>{{stock.currentPrice}}
+            </p>
+            <p>
+              <b>Today's Low:</b>{{stock.lowPrice}}
+            </p>
+            <p>
+              <b>Today's High:</b>{{stock.highPrice}}
+            </p>
+          </details>
+        </td>
+        <!--<td class="text-left">{{stock.symbol}}</td>
+        <td class="text-center">{{stock.currentPrice}}</td>
+        <td class="text-center">{{stock.lowPrice}}</td>
+        <td class="text-center">{{stock.highPrice}}</td>
+        <td class="text-center">
+          <button class="btn btn-primary" (click)="deleteStock(stock.stockMappingId)">
+            Del
+          </button>
+        </td>-->
+      </tr>
+    </tbody>
+  </table>
+  <div class="float-right">
+    <ngb-pagination [collectionSize]="totalLength" (pageChange)="changePage($event)" [(page)]="page" [maxSize]="3" [boundaryLinks]="true"></ngb-pagination>
+  </div>
+</div>

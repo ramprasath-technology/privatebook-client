@@ -5,24 +5,32 @@ import { Common } from '../models/common';
 import { Goal } from '../models/goal';
 import { Event } from '../models/event';
 import { Features } from '../models/features';
+import { Stock } from '../models/stock';
+import { Diary } from '../models/diary';
 
 import { FeatureServiceService } from '../services/feature-service.service';
 import { CommonService } from '../services/common.service';
 import { GoalService } from '../services/goal.service'
 import { EventService } from '../services/event.service';
+import { StockService } from '../services/stock.service';
+import { DiaryService } from '../services/diary.service';
 
 @Component({
   selector: 'app-feature-list',
   templateUrl: './feature-list.component.html',
   styleUrls: ['./feature-list.component.css'],
-  providers: [FeatureServiceService, CommonService, GoalService, EventService]
+  providers: [FeatureServiceService, CommonService, GoalService, EventService, StockService, DiaryService]
 })
 export class FeatureListComponent implements OnInit {
   private sub: any;
   private userId: number;
-  private goals: Goal[] = [];
-  private events: Event[] = [];
-  private features: Features[] = [];
+  lastEntry: string = "";
+
+  goals: Goal[] = [];
+  events: Event[] = [];
+  features: Features[] = [];
+  stocks: Stock[] = [];
+
   showEvents: boolean = false;
   showGoals: boolean = false;
   showStocks: boolean = false;
@@ -31,7 +39,7 @@ export class FeatureListComponent implements OnInit {
   showFiles: boolean = false;
 
 
-  constructor(private route: ActivatedRoute, private featureService: FeatureServiceService, private commonService: CommonService, private router: Router, private goalService: GoalService, private eventService: EventService) { }
+  constructor(private route: ActivatedRoute, private featureService: FeatureServiceService, private commonService: CommonService, private router: Router, private goalService: GoalService, private eventService: EventService, private stockService: StockService, private diaryService: DiaryService) { }
 
   getFeaturesForUser() {
     this.featureService.getFeaturesForUser(this.userId)
@@ -74,6 +82,7 @@ export class FeatureListComponent implements OnInit {
   }
 
   findFeatureToModify(featureName: string): Features[] {
+    console.log(this.features);
     let featureToModify: Features[] = this.features.filter((featureObj) => {
       return featureObj.feature.shortName === featureName;
     });
@@ -93,11 +102,11 @@ export class FeatureListComponent implements OnInit {
           break;
         case "STO":
           this.showStocks = true;
-          //this.getEvents();
+          this.getStockEntries();
           break;
         case "DIA":
           this.showDiary = true;
-          //this.getEvents();
+          this.getDiaryEntries();
           break;
         case "WEA":
           this.showWeather = true;
@@ -123,10 +132,23 @@ export class FeatureListComponent implements OnInit {
         break;
       case "EVE":
         if (this.showEvents)
-          this.getEvents();
+          this.addFeature(featureName);
         else
           this.removeFeature(featureName);
         break;
+      case "STO":
+        if (this.showStocks)
+          this.addFeature(featureName);
+        else
+          this.removeFeature(featureName);
+        break;
+      case "DIA":
+        if (this.showDiary)
+          this.addFeature(featureName);
+        else
+          this.removeFeature(featureName);
+        break;
+
       /*case "STO":
         this.showStocks = param;
         break;
@@ -155,12 +177,18 @@ export class FeatureListComponent implements OnInit {
         if (this.showEvents)
           this.getEvents();
         break;
+      case "STO":
+        if (this.showStocks)
+          this.getStockEntries();
+        break;
+      case "DIA":
+        if (this.showDiary)
+          this.getDiaryEntries();
+        break;
       /*case "STO":
         this.showStocks = param;
         break;
-      case "DIA":
-        this.showDiary = param;
-        break;
+      
       case "WEA":
         this.showWeather = param;
         break;
@@ -184,8 +212,6 @@ export class FeatureListComponent implements OnInit {
       });
   }
 
-
-
   getEvents() {
     this.eventService.getEvents(this.userId)
       .subscribe((response) => {
@@ -194,6 +220,26 @@ export class FeatureListComponent implements OnInit {
       },
       (error) => {
 
+      });
+  }
+
+  getStockEntries() {
+    this.stockService.getStockForUser(this.userId)
+      .subscribe((response) => {
+        let stocks = response.json();
+        this.stocks = stocks.splice(0, 3);
+      }, (error) => {
+
+      });
+  }
+
+  getDiaryEntries() {
+    this.diaryService.getDiaryEntriesByUser(this.userId)
+      .subscribe((response) => {
+        let entries: Diary[] = response.json();
+        if (entries.length > 0)
+          this.lastEntry = entries[0].entry.substring(3, 10) + "...";
+          console.log(this.lastEntry);
       });
   }
 

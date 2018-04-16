@@ -20,6 +20,7 @@ export class FeatureServiceService {
 
   removeFeature(featureToRemove: any){
     var url =  `${Common.BASE_API_URL}api/UserFeatureMappings/UserFeatureToRemove`;
+    console.log(featureToRemove);
     return this.http.post(url, featureToRemove);
   }
 

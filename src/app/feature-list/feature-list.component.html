@@ -1,118 +1,126 @@
+<app-landing-header (signinClicked)="showSigninForm($event)">
+</app-landing-header>
 <app-navbar></app-navbar>
-
-<details class="feature-selection">
-    <summary>Feature Selection</summary>
-    <div class="feature-flex-container">
-        <span (change)="determineAction('GOA')">
+<div class="main-content">
+    <details class="feature-selection">
+        <summary>Feature Selection</summary>
+        <div class="feature-flex-container">
+            <span (change)="determineAction('GOA')">
         <input type="checkbox" [(ngModel)]="showGoals"/>Goals
         </span>
-        <span (change)="determineAction('EVE')">
+            <span (change)="determineAction('EVE')">
         <input type="checkbox" [(ngModel)]="showEvents"/>Events
         </span>
-        <span>
+            <span>
         <input type="checkbox" [(ngModel)]="showStocks"/>Stocks
         </span>
-        <span>
+            <span>
         <input type="checkbox" [(ngModel)]="showDiary"/>Diary
         </span>
-        <span>
+            <span>
         <input type="checkbox" [(ngModel)]="showWeather"/>Weather
         </span>
-        <span>
+            <span>
         <input type="checkbox" [(ngModel)]="showFiles"/>Files
         </span>
-    </div>
-</details>
+        </div>
+    </details>
 
-<div class="flex-container">
-    <div class="flex-item" *ngIf="showGoals">
-        <div class="feature-card" (click)="redirect('todo')">
-            <div class="card border-primary mb-3">
-                <div class="card-header">Goals</div>
-                <div *ngIf="goals.length > 0" class="card-body text-primary">
-                    <ul class="list-group" *ngFor="let goal of goals">
-                        <li class="list-group-item">{{goal.goalDescription}}</li>
-                    </ul>
-                </div>
-                <div *ngIf="goals.length == 0" class="card-body text-primary">
-                    <p>
-                        Life is dull without goals! Add your goals here.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="flex-item" *ngIf="showEvents">
-        <div class="feature-card" (click)="redirect('event')">
-            <div class="card border-primary mb-3">
-                <div class="card-header">Events</div>
-                <div *ngIf="events.length > 0" class="card-body text-primary">
-                    <ul class="list-group" *ngFor="let event of events">
-                        <li class="list-group-item">{{event.eventName}}</li>
-                    </ul>
-                </div>
-                <div *ngIf="events.length == 0" class="card-body text-primary">
-                    <p>
-                        Life is a collection of meaningful events! Track your events here.
-                    </p>
+    <div class="flex-container">
+        <div class="flex-item" *ngIf="showGoals">
+            <div class="feature-card" (click)="redirect('todo')">
+                <div class="card card-transform border-primary mb-3">
+                    <div class="card-header">Goals</div>
+                    <div *ngIf="goals.length > 0" class="card-body text-primary">
+                        <ul class="list-group" *ngFor="let goal of goals">
+                            <li class="list-group-item">{{goal.goalDescription}}</li>
+                        </ul>
+                    </div>
+                    <div *ngIf="goals.length == 0" class="card-body text-primary">
+                        <p>
+                            Life is dull without goals! Add your goals here.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="flex-item" *ngIf="showDiary" (click)="redirect('diarylist')">
-        <div class="feature-card">
-            <div class="card border-primary mb-3">
-                <div class="card-header">Diary</div>
-                <div *ngIf="lastEntry.length > 0" class="card-body text-primary">
-                    <ul class="list-group">
-                        <li class="list-group-item">{{lastEntry}}</li>
-                    </ul>
-                </div>
-                <div *ngIf="lastEntry.length === 0" class="card-body text-primary">
-                    <p>
-                        Record your beautiful moments here. These memories together make up what is called life!
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="flex-item" *ngIf="showStocks" (click)="redirect('stock')">
-        <div class="feature-card">
-            <div class="card border-primary mb-3">
-                <div class="card-header">Stock</div>
-                <div *ngIf="stocks.length > 0" class="card-body text-primary">
-                    <ul class="list-group" *ngFor="let stock of stocks">
-                        <li class="list-group-item">{{stock.stockSymbol}}</li>
-                    </ul>
-                </div>
-                <div *ngIf="stocks.length === 0" class="card-body text-primary">
-                    <p>
-                        How much money have you gained today? Add your stocks to find out!
-                    </p>
+        <div class="flex-item" *ngIf="showEvents">
+            <div class="feature-card" (click)="redirect('event')">
+                <div class="card card-transform border-primary mb-3">
+                    <img *ngIf="events.length == 0" class="card-img-top" src="../assets/images/feature-list/Calendar.JPG" alt="Enter your events">
+                     
+                    <div *ngIf="events.length > 0" class="card-header">Events</div>
+        
+                    <div *ngIf="events.length > 0" class="card-body">
+                        <ul class="list-group" *ngFor="let event of events">
+                            <li class="list-group-item">{{event.eventName}}</li>
+                        </ul>
+                    </div>
+                    <div *ngIf="events.length == 0" class="card-body">
+                        <p>
+                            Life is a collection of meaningful events! Track your events here.
+                        </p>
+                    </div>
+                   
                 </div>
             </div>
         </div>
-    </div>
-    <div class="flex-item" *ngIf="showWeather">
-        <div class="feature-card">
-            <div class="card border-primary mb-3">
-                <div class="card-header">Header</div>
-                <div class="card-body text-primary">
-                    <h5 class="card-title">Primary card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <div class="flex-item" *ngIf="showDiary" (click)="redirect('diarylist')">
+            <div class="feature-card">
+                <div class="card border-primary mb-3">
+                    <div class="card-header">Diary</div>
+                    <div *ngIf="lastEntry.length > 0" class="card-body text-primary">
+                        <ul class="list-group">
+                            <li class="list-group-item">{{lastEntry}}</li>
+                        </ul>
+                    </div>
+                    <div *ngIf="lastEntry.length === 0" class="card-body text-primary">
+                        <p>
+                            Record your beautiful moments here. These memories together make up what is called life!
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="flex-item" *ngIf="showFiles">
-        <div class="feature-card">
-            <div class="card border-primary mb-3">
-                <div class="card-header">Header</div>
-                <div class="card-body text-primary">
-                    <h5 class="card-title">Primary card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <div class="flex-item" *ngIf="showStocks" (click)="redirect('stock')">
+            <div class="feature-card">
+                <div class="card border-primary mb-3">
+                    <div class="card-header">Stock</div>
+                    <div *ngIf="stocks.length > 0" class="card-body text-primary">
+                        <ul class="list-group" *ngFor="let stock of stocks">
+                            <li class="list-group-item">{{stock.stockSymbol}}</li>
+                        </ul>
+                    </div>
+                    <div *ngIf="stocks.length === 0" class="card-body text-primary">
+                        <p>
+                            How much money have you gained today? Add your stocks to find out!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex-item" *ngIf="showWeather">
+            <div class="feature-card">
+                <div class="card border-primary mb-3">
+                    <div class="card-header">Header</div>
+                    <div class="card-body text-primary">
+                        <h5 class="card-title">Primary card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex-item" *ngIf="showFiles">
+            <div class="feature-card">
+                <div class="card border-primary mb-3">
+                    <div class="card-header">Header</div>
+                    <div class="card-body text-primary">
+                        <h5 class="card-title">Primary card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<app-footer></app-footer>

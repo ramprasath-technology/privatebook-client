@@ -5,6 +5,31 @@
   justify-content: space-around;
 }
 
+.main-content{
+    background: linear-gradient(white, #ccf5ff);
+}
+
+.card-transform{
+    background-color: #ffd175;
+    color: #1537b6;
+}
+
+.card-header{
+    background-color: #e99803;
+    font-weight: bold;
+}
+
+.card-transform:hover {   
+    box-shadow: 1px 1px 10px #000;
+    z-index: 5;
+     -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+      }
+
+.card-img-top{
+    height: 60%;
+}      
+
 .feature-flex-container{
   display: flex;
   flex-direction: row;

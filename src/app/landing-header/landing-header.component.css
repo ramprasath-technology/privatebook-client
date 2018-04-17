@@ -5,7 +5,7 @@
 }
 
 .container-fluid{
-    background-color: lightblue;
+    background-color: #008fb3;
 }
 
 .mascot-img{
@@ -37,4 +37,28 @@
     .brand-font{
         font-size: 1.5em;
     }
+    .brand-img{
+    width: 150px;
+    padding-top: 5px;
 }
+}
+
+@media screen and (max-width: 767px){
+    .brand-img{
+    width: 80px;
+    padding-top: 5px;
+}
+.mascot-img{
+    width: 60px;
+    height: auto;
+}
+}
+
+.btn-primary{
+    background-color: orange;
+}
+.btn-primary{
+        background-color: orange;
+}
+
+

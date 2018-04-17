@@ -26,6 +26,7 @@ import { StockComponent } from './stock/stock.component';
 import { EventComponent } from './event/event.component';
 import { DiaryListComponent } from './diary-list/diary-list.component';
 import { DiaryComponent } from './diary/diary.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -47,7 +48,8 @@ import { DiaryComponent } from './diary/diary.component';
     StockComponent,
     EventComponent,
     DiaryListComponent,
-    DiaryComponent
+    DiaryComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

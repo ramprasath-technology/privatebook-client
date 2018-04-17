@@ -5,6 +5,9 @@
 	padding: 0;
 	width: 100%;
 	padding-top: 5vh;
+	background: linear-gradient(white,#ccf5ff);
+	overflow: auto;
+	height: 85vh;
 }
 
 
@@ -61,6 +64,15 @@
 	margin: 0;
 	padding: 0;
 }
+
+.btn-primary{
+    background-color: orange;
+}
+
+.main-content{
+	background: linear-gradient(white,#ccf5ff);
+}
+
 
 
 

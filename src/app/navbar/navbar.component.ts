@@ -13,9 +13,16 @@ export class NavbarComponent implements OnInit {
 userId: number;
   constructor(private commonService: CommonService, private router: Router) { }
 
-  loadGoals(){
-    this.commonService.currentUserId.subscribe(userId => this.userId = userId);
-    //this.router.navigate(['/todo',this.userId]);
+  loadFeatures(){
+
+  }
+
+  loadAboutUs(){
+
+  }
+
+  loadContactUs(){
+    
   }
 
   ngOnInit() {

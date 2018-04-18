@@ -9,6 +9,8 @@ import { EventComponent } from './event/event.component';
 import { DiaryComponent } from './diary/diary.component';
 import { DiaryListComponent } from './diary-list/diary-list.component';
 import { StockComponent } from './stock/stock.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
@@ -18,7 +20,9 @@ const routes: Routes = [
   { path: 'event/:userId', component: EventComponent },
   { path: 'diary/:userId/:entryId', component: DiaryComponent},
   { path: 'diarylist/:userId', component: DiaryListComponent},
-  { path: 'stock/:userId', component: StockComponent }
+  { path: 'stock/:userId', component: StockComponent },
+  { path: 'contact', component: ContactUsComponent},
+  { path: 'about', component: AboutUsComponent}
 ];
 
 @NgModule({

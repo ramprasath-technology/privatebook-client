@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { Common } from '../models/common';
@@ -39,7 +39,7 @@ export class FeatureListComponent implements OnInit {
   showFiles: boolean = false;
 
 
-  constructor(private route: ActivatedRoute, private featureService: FeatureServiceService, private commonService: CommonService, private router: Router, private goalService: GoalService, private eventService: EventService, private stockService: StockService, private diaryService: DiaryService) { }
+  constructor(private elementRef: ElementRef, private route: ActivatedRoute, private featureService: FeatureServiceService, private commonService: CommonService, private router: Router, private goalService: GoalService, private eventService: EventService, private stockService: StockService, private diaryService: DiaryService) { }
 
   getFeaturesForUser() {
     this.featureService.getFeaturesForUser(this.userId)
@@ -253,6 +253,11 @@ export class FeatureListComponent implements OnInit {
       this.getFeaturesForUser();
 
     });
+  }
+
+  ngAfterViewInit() {
+    this.elementRef.nativeElement.ownerDocument.body.style.minHeight = "100vh";
+    this.elementRef.nativeElement.ownerDocument.body.style.background = "linear-gradient(#008fb3, #ccf5ff)";
   }
 
 }

@@ -27,6 +27,8 @@ import { EventComponent } from './event/event.component';
 import { DiaryListComponent } from './diary-list/diary-list.component';
 import { DiaryComponent } from './diary/diary.component';
 import { FooterComponent } from './footer/footer.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 
 
@@ -49,7 +51,9 @@ import { FooterComponent } from './footer/footer.component';
     EventComponent,
     DiaryListComponent,
     DiaryComponent,
-    FooterComponent
+    FooterComponent,
+    ContactUsComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,

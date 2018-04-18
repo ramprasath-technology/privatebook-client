@@ -1,0 +1,70 @@
+
+
+.main-about-img-div{
+    text-align: center;
+}
+
+.main-about-img{
+    height: auto;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+   padding-top: 25px;;
+}
+
+@media screen and (max-width: 767px){
+    .flex-item{
+        flex-basis: 80%;
+    }
+    .feature-selection{
+    width: 80%;
+    margin: auto;
+}
+}
+
+@media screen and (min-width: 768px){
+    .flex-item{
+        flex-basis: 200px;
+    }
+    .card{
+        height: 300px;
+    }
+    .feature-selection{
+    width: 96.500000000000000000000%;
+    margin: auto;
+}
+.main-about-img{
+max-height: 100vh;
+}
+}
+
+.about-us-card-body{
+    text-align: center;
+}
+
+.team{
+    text-align: center;
+}
+
+.mission{
+    text-align: center;
+    padding-top: 1vh;
+}
+
+.about-us-message{
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.about-us-div{
+    /*height: 200px;*/
+}

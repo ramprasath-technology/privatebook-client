@@ -12,9 +12,9 @@ export class AboutUsComponent implements OnInit, AfterViewInit {
   ngOnInit() {
   }
 
-  ngAfterViewInit() {
-    this.elementRef.nativeElement.ownerDocument.body.style.minHeight = "100vh";
-    this.elementRef.nativeElement.ownerDocument.body.style.background = "linear-gradient(#008fb3, #ccf5ff)";
-  }
+   ngAfterViewInit(){
+         this.elementRef.nativeElement.ownerDocument.body.style.minHeight = "100vh";
+         this.elementRef.nativeElement.ownerDocument.body.style.background = "linear-gradient(#ccf5ff, #008fb3)";
+      }
 
 }

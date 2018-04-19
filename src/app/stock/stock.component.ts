@@ -64,7 +64,11 @@ export class StockComponent implements OnInit {
       .subscribe((response) => {
         this.stocks = [];
         this.stocks = response.json();
-        this.getStockPrice();
+        if(this.stocks.length > 0)
+          this.getStockPrice();
+          else{
+            this.loadingSpinner.hide();
+          }
         //this.formatDate();
       }, (error) => {
 
@@ -117,8 +121,8 @@ export class StockComponent implements OnInit {
           else {
             let stockPrices = responseObj["Time Series (Daily)"];
             if (stockPrices !== undefined) {
-              //let lastPrice = stockPrices[this.formatDate()];
-              let lastPrice = stockPrices["2018-04-13"];
+              let lastPrice = stockPrices[this.formatDate()];
+              //let lastPrice = stockPrices["2018-04-13"];
               if (lastPrice !== undefined) {
                 let parsedStockObj = new StockPrice();
                 parsedStockObj.currentPrice = lastPrice["1. open"];

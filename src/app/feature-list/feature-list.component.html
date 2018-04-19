@@ -17,12 +17,12 @@
             <span>
         <input type="checkbox" [(ngModel)]="showDiary"/>Diary
         </span>
-            <span>
+            <!--<span>
         <input type="checkbox" [(ngModel)]="showWeather"/>Weather
         </span>
             <span>
         <input type="checkbox" [(ngModel)]="showFiles"/>Files
-        </span>
+        </span>-->
         </div>
     </details>
 
@@ -30,13 +30,14 @@
         <div class="flex-item" *ngIf="showGoals">
             <div class="feature-card" (click)="redirect('todo')">
                 <div class="card card-transform border-primary mb-3">
-                    <div class="card-header">Goals</div>
-                    <div *ngIf="goals.length > 0" class="card-body text-primary">
+                    <img *ngIf="goals.length == 0" class="card-img-top" src="../assets/images/feature-list/goals.jpg" alt="Enter your goals">
+                    <div class="card-header" *ngIf="goals.length > 0">Goals</div>
+                    <div *ngIf="goals.length > 0" class="card-body">
                         <ul class="list-group" *ngFor="let goal of goals">
                             <li class="list-group-item">{{goal.goalDescription}}</li>
                         </ul>
                     </div>
-                    <div *ngIf="goals.length == 0" class="card-body text-primary">
+                    <div *ngIf="goals.length == 0" class="card-body">
                         <p>
                             Life is dull without goals! Add your goals here.
                         </p>
@@ -47,7 +48,7 @@
         <div class="flex-item" *ngIf="showEvents">
             <div class="feature-card" (click)="redirect('event')">
                 <div class="card card-transform border-primary mb-3">
-                    <img *ngIf="events.length == 0" class="card-img-top" src="../assets/images/feature-list/Calendar.JPG" alt="Enter your events">
+                    <img *ngIf="events.length == 0" class="card-img-top" src="../assets/images/feature-list/calendar.jpg" alt="Enter your events">
                      
                     <div *ngIf="events.length > 0" class="card-header">Events</div>
         
@@ -67,14 +68,16 @@
         </div>
         <div class="flex-item" *ngIf="showDiary" (click)="redirect('diarylist')">
             <div class="feature-card">
-                <div class="card border-primary mb-3">
-                    <div class="card-header">Diary</div>
-                    <div *ngIf="lastEntry.length > 0" class="card-body text-primary">
+                <div class="card card-transform border-primary mb-3">
+                    <img *ngIf="lastEntry.length == 0" class="card-img-top" src="../assets/images/feature-list/diary.jpg" alt="Write your journal">
+
+                    <div *ngIf="lastEntry.length > 0" class="card-header">Diary</div>
+                    <div *ngIf="lastEntry.length > 0" class="card-body">
                         <ul class="list-group">
                             <li class="list-group-item">{{lastEntry}}</li>
                         </ul>
                     </div>
-                    <div *ngIf="lastEntry.length === 0" class="card-body text-primary">
+                    <div *ngIf="lastEntry.length === 0" class="card-body">
                         <p>
                             Record your beautiful moments here. These memories together make up what is called life!
                         </p>
@@ -84,14 +87,16 @@
         </div>
         <div class="flex-item" *ngIf="showStocks" (click)="redirect('stock')">
             <div class="feature-card">
-                <div class="card border-primary mb-3">
-                    <div class="card-header">Stock</div>
-                    <div *ngIf="stocks.length > 0" class="card-body text-primary">
+                <div class="card card-transform border-primary mb-3">
+                    <img *ngIf="stocks.length == 0" class="card-img-top" src="../assets/images/feature-list/stock.jpg" alt="Write your journal">
+
+                    <div *ngIf="stocks.length > 0"class="card-header">Stock</div>
+                    <div *ngIf="stocks.length > 0" class="card-body">
                         <ul class="list-group" *ngFor="let stock of stocks">
                             <li class="list-group-item">{{stock.stockSymbol}}</li>
                         </ul>
                     </div>
-                    <div *ngIf="stocks.length === 0" class="card-body text-primary">
+                    <div *ngIf="stocks.length === 0" class="card-body">
                         <p>
                             How much money have you gained today? Add your stocks to find out!
                         </p>
@@ -99,7 +104,7 @@
                 </div>
             </div>
         </div>
-        <div class="flex-item" *ngIf="showWeather">
+        <!--<div class="flex-item" *ngIf="showWeather">
             <div class="feature-card">
                 <div class="card border-primary mb-3">
                     <div class="card-header">Header</div>
@@ -120,7 +125,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
     </div>
 </div>
 <app-footer></app-footer>

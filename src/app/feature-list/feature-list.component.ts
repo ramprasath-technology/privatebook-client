@@ -108,14 +108,14 @@ export class FeatureListComponent implements OnInit {
           this.showDiary = true;
           this.getDiaryEntries();
           break;
-        case "WEA":
-          this.showWeather = true;
+       // case "WEA":
+         // this.showWeather = true;
           //this.getEvents();
-          break;
-        case "FIL":
-          this.showFiles = true;
+          //break;
+        //case "FIL":
+          //this.showFiles = true;
           //this.getEvents();
-          break;
+          //break;
         default:
           break;
       }

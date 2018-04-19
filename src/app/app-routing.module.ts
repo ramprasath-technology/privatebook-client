@@ -11,6 +11,7 @@ import { DiaryListComponent } from './diary-list/diary-list.component';
 import { StockComponent } from './stock/stock.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
@@ -22,7 +23,9 @@ const routes: Routes = [
   { path: 'diarylist/:userId', component: DiaryListComponent},
   { path: 'stock/:userId', component: StockComponent },
   { path: 'contact', component: ContactUsComponent},
-  { path: 'about', component: AboutUsComponent}
+  { path: 'about', component: AboutUsComponent},
+  { path : 'error', component: ErrorPageComponent},
+  {path : '**', redirectTo: '/error'}
 ];
 
 @NgModule({

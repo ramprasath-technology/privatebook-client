@@ -29,6 +29,7 @@ import { DiaryComponent } from './diary/diary.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 
 
@@ -53,7 +54,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
     DiaryComponent,
     FooterComponent,
     ContactUsComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,

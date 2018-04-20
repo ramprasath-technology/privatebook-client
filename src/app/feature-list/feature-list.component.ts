@@ -257,7 +257,7 @@ export class FeatureListComponent implements OnInit {
 
   ngAfterViewInit() {
     this.elementRef.nativeElement.ownerDocument.body.style.minHeight = "100vh";
-    this.elementRef.nativeElement.ownerDocument.body.style.background = "linear-gradient(#008fb3, #ccf5ff)";
+    this.elementRef.nativeElement.ownerDocument.body.style.background = "linear-gradient(#fff,#ccf5ff)";
   }
 
 }

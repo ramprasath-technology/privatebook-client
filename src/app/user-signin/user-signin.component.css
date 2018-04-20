@@ -5,3 +5,9 @@
 .btn-primary{
     background-color: orange;
 }
+
+.forgot-password-link{
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}

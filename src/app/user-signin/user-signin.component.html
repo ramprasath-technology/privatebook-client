@@ -1,16 +1,54 @@
 <h2>
-  Sign In
+  {{heading}}
 </h2>
-<p class="errorMessage" *ngIf="showErrorMessage">{{errorMessage}}</p>
-<form (ngSubmit)="loginUser(signinForm)" #signinForm="ngForm" ngNativeValidate>
+<p class="errorMessage" class="alert alert-danger animated tada" *ngIf="showErrorMessage">{{errorMessage}}</p>
+<form *ngIf="showLogin" (ngSubmit)="loginUser(signinForm)" #signinForm="ngForm" ngNativeValidate>
   <div class="form-group">
     <label for="email">Email</label>
     <input type="email" class="form-control" name="email" ngModel required/>
   </div>
   <div class="form-group">
     <label for="password">Password</label>
-    <input type="password" class="form-control" name="password" minlength="6" ngModel required/>
+    <input type="password" class="form-control" name="password"  ngModel required/>
   </div>
   <button type="submit" class="btn btn-primary">Sign In</button>
   <button type="reset" class="btn btn-secondary">Reset</button>
+  <div class="forgot-password-link">
+    <span (click)="showReset()">Forgot Password?</span>
+  </div>
+</form>
+
+
+<div class="alert alert-danger animated tada" role="alert" *ngIf="showEmailVerificationError && showEmailVerification">
+  {{emailErrorMessage}}
+</div>
+<form *ngIf="showEmailVerification" (ngSubmit)="verifyUser(userVerificationForm)" #userVerificationForm="ngForm" ngNativeValidate>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" class="form-control" name="email" ngModel required/>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<div class="alert alert-danger animated tada" role="alert" *ngIf="showSecurityError && showPasswordReset">
+  {{securityErrorMessage}}
+</div>
+
+<form *ngIf="showPasswordReset" (ngSubmit)="resetPassword(passwordResetForm)" #passwordResetForm="ngForm" ngNativeValidate>
+    <div class="form-group">
+    <label for="securityQuestion">Security Question</label>
+    <p name="securityQuestion"> <b>{{securityQuestion}} </b> </p>
+  </div>
+    
+
+  
+  <div class="form-group">
+    <label for="securityAnswer">Security Answer</label>
+    <input type="text" class="form-control" name="securityAnswer" ngModel required/>
+  </div>
+  <div class="form-group">
+    <label for="newPassword">New Password</label>
+    <input type="password" class="form-control" name="newPassword" minlength="6" placeholder="Minimum 6 characters" ngModel required/>
+  </div>
+  <button type="submit" class="btn btn-primary">Reset Password</button>
 </form>

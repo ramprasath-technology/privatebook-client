@@ -29,7 +29,7 @@
     <div class="flex-container">
         <div class="flex-item" *ngIf="showGoals">
             <div class="feature-card" (click)="redirect('todo')">
-                <div class="card card-transform border-primary mb-3">
+                <div class="card card-transform border-primary mb-3 animated tada">
                     <img *ngIf="goals.length == 0" class="card-img-top" src="../assets/images/feature-list/goals.jpg" alt="Enter your goals">
                     <div class="card-header" *ngIf="goals.length > 0">Goals</div>
                     <div *ngIf="goals.length > 0" class="card-body">
@@ -47,7 +47,7 @@
         </div>
         <div class="flex-item" *ngIf="showEvents">
             <div class="feature-card" (click)="redirect('event')">
-                <div class="card card-transform border-primary mb-3">
+                <div class="card card-transform border-primary mb-3 animated tada">
                     <img *ngIf="events.length == 0" class="card-img-top" src="../assets/images/feature-list/calendar.jpg" alt="Enter your events">
                      
                     <div *ngIf="events.length > 0" class="card-header">Events</div>
@@ -68,8 +68,8 @@
         </div>
         <div class="flex-item" *ngIf="showDiary" (click)="redirect('diarylist')">
             <div class="feature-card">
-                <div class="card card-transform border-primary mb-3">
-                    <img *ngIf="lastEntry.length == 0" class="card-img-top" src="../assets/images/feature-list/diary.jpg" alt="Write your journal">
+                <div class="card card-transform border-primary mb-3 animated tada">
+                    <img *ngIf="lastEntry.length == 0" class="card-img-top" src="../assets/images/feature-list/journal.jpg" alt="Write your journal">
 
                     <div *ngIf="lastEntry.length > 0" class="card-header">Diary</div>
                     <div *ngIf="lastEntry.length > 0" class="card-body">
@@ -87,7 +87,7 @@
         </div>
         <div class="flex-item" *ngIf="showStocks" (click)="redirect('stock')">
             <div class="feature-card">
-                <div class="card card-transform border-primary mb-3">
+                <div class="card card-transform border-primary mb-3 animated tada">
                     <img *ngIf="stocks.length == 0" class="card-img-top" src="../assets/images/feature-list/stock.jpg" alt="Write your journal">
 
                     <div *ngIf="stocks.length > 0"class="card-header">Stock</div>

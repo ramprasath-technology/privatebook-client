@@ -1,7 +1,7 @@
 <h2>
   {{heading}}
 </h2>
-<p class="errorMessage" class="alert alert-danger animated tada" *ngIf="showErrorMessage">{{errorMessage}}</p>
+<div class="errorMessage" class="alert alert-danger animated tada" *ngIf="showErrorMessage">{{errorMessage}}</div>
 <form *ngIf="showLogin" (ngSubmit)="loginUser(signinForm)" #signinForm="ngForm" ngNativeValidate>
   <div class="form-group">
     <label for="email">Email</label>

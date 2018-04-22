@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
@@ -29,7 +29,7 @@ export class StockComponent implements OnInit {
   showExists: boolean = false;
   page: number = 1;
   totalLength: number;
-  constructor(private route: ActivatedRoute, private stockService: StockService, private loadingSpinner: Ng4LoadingSpinnerService) { }
+  constructor(private route: ActivatedRoute, private stockService: StockService, private loadingSpinner: Ng4LoadingSpinnerService, private elementRef: ElementRef) { }
 
 
   constructStock(symbol: string): Stock {
@@ -48,13 +48,16 @@ export class StockComponent implements OnInit {
         if (response.json() === "Already Exists") {
 
           this.showExists = true;
+          this.loadingSpinner.hide();
         } else {
           this.showSuccess = true;
           form.reset();
+          this.loadingSpinner.hide();
         }
 
       }, (error) => {
         this.showError = true;
+        this.loadingSpinner.hide();
       });
   }
 
@@ -64,6 +67,7 @@ export class StockComponent implements OnInit {
       .subscribe((response) => {
         this.stocks = [];
         this.stocks = response.json();
+        console.log(this.stocks);
         if(this.stocks.length > 0)
           this.getStockPrice();
           else{
@@ -113,6 +117,7 @@ export class StockComponent implements OnInit {
     this.stocks.forEach((stock) => {
       this.stockService.getStockPrice(stock.stockSymbol)
         .subscribe((response) => {
+
           let responseObj: StockPrice = response.json();
           let errorMessage = responseObj["Error Message"];
           if (errorMessage !== undefined) {
@@ -122,7 +127,9 @@ export class StockComponent implements OnInit {
             let stockPrices = responseObj["Time Series (Daily)"];
             if (stockPrices !== undefined) {
               let lastPrice = stockPrices[this.formatDate()];
-              //let lastPrice = stockPrices["2018-04-13"];
+              if(lastPrice === undefined){
+                lastPrice = stockPrices["2018-04-20"];
+              }
               if (lastPrice !== undefined) {
                 let parsedStockObj = new StockPrice();
                 parsedStockObj.currentPrice = lastPrice["1. open"];
@@ -151,6 +158,7 @@ export class StockComponent implements OnInit {
     let end = pageNumber * 10;
     this.stocksToDisplay = this.stockPrice.slice(start, end);
     this.totalLength = this.stocksToDisplay.length;
+    console.log(this.stocksToDisplay);
     this.loadingSpinner.hide();
   }
 
@@ -168,6 +176,11 @@ export class StockComponent implements OnInit {
       this.userId = +params['userId'];
       this.getStocksForUser();
     });
+  }
+
+   ngAfterViewInit() {
+    this.elementRef.nativeElement.ownerDocument.body.style.minHeight = "100vh";
+    this.elementRef.nativeElement.ownerDocument.body.style.background = "linear-gradient(#fff,#ccf5ff)";
   }
 
 }

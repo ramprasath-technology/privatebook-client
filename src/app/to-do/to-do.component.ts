@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
@@ -20,8 +20,9 @@ export class ToDoComponent implements OnInit {
   isModalOpen: boolean = false;
   private sub: any;
   private userId: number;
-  successMessage = "Your goal has been saved successfully";
+  successMessage = "Whoa, we are tracking your goal";
   errorMessage = "There has been an error in saving your goal";
+  congratsMessage = "Superb! Congrats on completing one more goal!";
   showSuccess: boolean = false;
   showError: boolean = false;
   goalNumber: number = 0;
@@ -30,9 +31,10 @@ export class ToDoComponent implements OnInit {
   page: number = 1;
   progressValue = 0;
   displayPage: boolean = false;
+  showCongrats: boolean = false;
 
 
-  constructor(private goalService: GoalService, private route: ActivatedRoute, private spinnerService: Ng4LoadingSpinnerService) {
+  constructor(private goalService: GoalService, private route: ActivatedRoute, private spinnerService: Ng4LoadingSpinnerService, private elementRef: ElementRef) {
   }
 
   showSuccessMessage() {
@@ -59,6 +61,7 @@ export class ToDoComponent implements OnInit {
 
 
   saveGoal(form: NgForm) {
+    this.showCongrats = false;
     let newGoal: Goal = form.value;
     newGoal = this.assignGoalDefaults(newGoal);
 
@@ -107,6 +110,7 @@ export class ToDoComponent implements OnInit {
       .subscribe(
       (response) => {
         this.getGoals();
+        this.showCongrats = true;
       },
       (error) => {
 
@@ -134,6 +138,11 @@ export class ToDoComponent implements OnInit {
       this.userId = +params['userId'];
       this.getGoals();
     });
+  }
+
+   ngAfterViewInit() {
+    this.elementRef.nativeElement.ownerDocument.body.style.minHeight = "100vh";
+    this.elementRef.nativeElement.ownerDocument.body.style.background = "linear-gradient(#fff,#ccf5ff)";
   }
 
 }

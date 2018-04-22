@@ -2,8 +2,11 @@
 </app-header>
 <app-navbar></app-navbar>
 <div class="main-content">
+    <div class="weather-greeting">
+        {{weatherMessage}}
+    </div>
     <details class="feature-selection">
-        <summary>Feature Selection</summary>
+        <summary class="feature-summary">Feature Selection</summary>
         <div class="feature-flex-container">
             <span (change)="determineAction('GOA')">
         <input type="checkbox" [(ngModel)]="showGoals"/>Goals
@@ -49,9 +52,9 @@
             <div class="feature-card" (click)="redirect('event')">
                 <div class="card card-transform border-primary mb-3 animated tada">
                     <img *ngIf="events.length == 0" class="card-img-top" src="../assets/images/feature-list/calendar.jpg" alt="Enter your events">
-                     
+
                     <div *ngIf="events.length > 0" class="card-header">Events</div>
-        
+
                     <div *ngIf="events.length > 0" class="card-body">
                         <ul class="list-group" *ngFor="let event of events">
                             <li class="list-group-item">{{event.eventName}}</li>
@@ -62,7 +65,7 @@
                             Life is a collection of meaningful events! Track your events here.
                         </p>
                     </div>
-                   
+
                 </div>
             </div>
         </div>
@@ -90,7 +93,7 @@
                 <div class="card card-transform border-primary mb-3 animated tada">
                     <img *ngIf="stocks.length == 0" class="card-img-top" src="../assets/images/feature-list/stock.jpg" alt="Write your journal">
 
-                    <div *ngIf="stocks.length > 0"class="card-header">Stock</div>
+                    <div *ngIf="stocks.length > 0" class="card-header">Stock</div>
                     <div *ngIf="stocks.length > 0" class="card-body">
                         <ul class="list-group" *ngFor="let stock of stocks">
                             <li class="list-group-item">{{stock.stockSymbol}}</li>

@@ -8,9 +8,18 @@
     background-color: #008fb3;
 }
 
+.greeting{
+    cursor: pointer;
+}
+
+.logout{
+    cursor: pointer;
+}
+
 .mascot-img{
     width: 75px;
     height: auto;
+    cursor: pointer;
 }
 
 .mascot-img-container{
@@ -60,5 +69,11 @@
 .btn-primary{
         background-color: orange;
 }
+
+.greeting-message{
+    font-family: 'Work Sans', sans-serif;
+    color: #fff;
+}
+
 
 

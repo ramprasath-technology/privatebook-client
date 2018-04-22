@@ -36,19 +36,18 @@ export class UserSigninComponent implements OnInit {
       .subscribe(
       (response) => {
         if (response.status === 200) {
-          console.log('3')
           let data = response.json();
-          if (data >= 0)
+          if (data >= 0){
+          sessionStorage.setItem('userId', data);
             this.router.navigate(['/featurelist', data]);
+          }
           else
             this.showErrorMessage = true;
         } else {
-          console.log('1');
           this.showErrorMessage = true;
         }
       },
       (error) => {
-        console.log('2');
         this.showErrorMessage = true;
       }
       )

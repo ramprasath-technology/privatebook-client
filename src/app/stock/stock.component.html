@@ -1,3 +1,4 @@
+<app-header></app-header>
 <app-navbar></app-navbar>
 
 <div class="modal fade" id="stockModal" tabindex="-1" role="dialog" aria-labelledby="stockModalLabel" aria-hidden="true">
@@ -36,8 +37,8 @@
 <ng4-loading-spinner> </ng4-loading-spinner>
 
 <div *ngIf="stocksToDisplay.length == 0" class="welcomeMessage">
-  <div> 
-   Get started by adding a stock!
+  <div class="empty-message"> 
+Oops, no stocks found! Select the ones you wish to track today!
   </div>
   <div>
   <button class="btn btn-primary" data-toggle="modal" data-target="#stockModal">
@@ -74,8 +75,8 @@
           <details>
             <summary>
               {{stock.symbol}}
-              <span class="pull-right" (click)="deleteStock(stock.stockMappingId)">
-                Del
+              <span class="pull-right">
+                <button class="btn btn-primary"  (click)="deleteStock(stock.stockMappingId)"> Delete </button>
               </span>
             </summary>
             <p>
@@ -105,3 +106,4 @@
     <ngb-pagination [collectionSize]="totalLength" (pageChange)="changePage($event)" [(page)]="page" [maxSize]="3" [boundaryLinks]="true"></ngb-pagination>
   </div>
 </div>
+<app-footer></app-footer>

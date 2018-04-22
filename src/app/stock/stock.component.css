@@ -13,3 +13,7 @@
 .element-display{
     display: inline-block;
 }
+
+.empty-message{
+    padding-bottom: 10px;
+}

@@ -29,7 +29,11 @@ export class UserService {
   getUserByEmail(email: string){
     var url = `${Common.BASE_API_URL}api/users/EmailVerification/${email}`;
     return this.http.get(url);
+  }
 
+  getUserById(id: number){
+    var url = `${Common.BASE_API_URL}api/users/${id}`;
+    return this.http.get(url);
   }
 
 }

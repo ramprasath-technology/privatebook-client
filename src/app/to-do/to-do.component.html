@@ -1,4 +1,4 @@
-<app-landing-header></app-landing-header>
+<app-header></app-header>
 <app-navbar></app-navbar>
 
 <div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel" aria-hidden="true">
@@ -34,56 +34,52 @@
 
 <ng4-loading-spinner> </ng4-loading-spinner>
 <div class="main-content">
-<div *ngIf="goalsToDisplay.length == 0" class="welcomeMessage">
-  <div>
-    Get started by adding a goal!
-  </div>
-  <div>
-    <button class="btn btn-primary" data-toggle="modal" data-target="#eventModal">
-  Add new goal
-  </button>
-  </div>
-</div>
-
-<div class="placement" *ngIf="goalsToDisplay.length > 0">
-  <caption class="">
-</caption>
-  <div class="action-row row">
-    <div class="float-left">
-      <caption>
-        Goals
-      </caption>
+  <div *ngIf="goalsToDisplay.length == 0" class="welcomeMessage">
+    <div class="empty-message">
+      Oops, no goals found :( Let’s get started today!
     </div>
-<div  class="float-right">
-    <button class="btn btn-primary" data-toggle="modal" data-target="#eventModal">
+    <div>
+      <button class="btn btn-primary" data-toggle="modal" data-target="#eventModal">
   Add new goal
   </button>
+    </div>
   </div>
-  </div>
-  <table class=" table table-hover goal-table">
-    <thead>
-      <tr>
-        <th class="w-10 text-center">#</th>
-        <th class="w-50 text-left">Todo</th>
-        <th class="w-20 text-center">Complete</th>
-      </tr>
-    </thead>
-    <tbody *ngFor="let goal of goalsToDisplay">
-      <tr>
-        <td class="text-center">{{goal.goalNumber}}</td>
-        <td class="text-left">{{goal.goalDescription}}</td>
-        <td class="text-center">
-          <!--<i class="fas fa-check-circle"></i>-->
-          <button class="btn btn-primary" (click)="deleteGoal(goal.goalId)">
-            Complete
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="float-right">
-    <ngb-pagination [collectionSize]="totalLength" (pageChange)="changePage($event)" [(page)]="page" [maxSize]="3" [boundaryLinks]="true"></ngb-pagination>
-  </div>
+
+  <div class="placement" *ngIf="goalsToDisplay.length > 0">
+<div class="alert alert-success" *ngIf="showCongrats">
+  {{congratsMessage}}
 </div>
+    <div class="float-right">
+      <button class="btn btn-primary" data-toggle="modal" data-target="#eventModal">
+  Add new goal
+  </button>
+    </div>
+<br/>
+<br/>
+    <table class=" table table-hover goal-table">
+      <thead>
+        <tr class="table-header">
+          <th class="w-10 text-center">#</th>
+          <th class="w-50 text-left">Task</th>
+          <th class="w-20 text-center">Status</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let goal of goalsToDisplay">
+        <tr>
+          <td class="text-center">{{goal.goalNumber}}</td>
+          <td class="text-left">{{goal.goalDescription}}</td>
+          <td class="text-center">
+            <!--<i class="fas fa-check-circle"></i>-->
+            <button class="btn btn-primary" (click)="deleteGoal(goal.goalId)">
+            Done
+          </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="float-right">
+      <ngb-pagination [collectionSize]="totalLength" (pageChange)="changePage($event)" [(page)]="page" [maxSize]="3" [boundaryLinks]="true"></ngb-pagination>
+    </div>
+  </div>
 </div>
 <app-footer></app-footer>

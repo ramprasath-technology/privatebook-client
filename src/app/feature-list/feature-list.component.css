@@ -5,6 +5,14 @@
   justify-content: space-around;
 }
 
+.weather-greeting{
+    text-align: center;
+    color: darkorange;
+    /*font-weight: bold;
+    font-style: italic;*/
+    font-size: 1.5em;
+    font-family: 'Philosopher', sans-serif;
+}
 .main-content{
     padding-bottom: 35px;
 }
@@ -21,7 +29,6 @@
 
 .card-transform:hover {   
     box-shadow: 1px 1px 10px #000;
-    z-index: 5;
      -webkit-transform: scale(1.05);
     -moz-transform: scale(1.05);
       }
@@ -40,6 +47,7 @@
 .feature-selection{
     padding-top: 25px;
     padding-bottom: 25px;
+    color: #00008b;
 }
 
 
@@ -68,5 +76,11 @@
 
 .card{
     cursor: pointer;
+}
+
+.feature-summary{
+    color: #00008b;
+    font-weight: bold;
+    padding-bottom: 0.8em;
 }
 

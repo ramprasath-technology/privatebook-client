@@ -13,3 +13,11 @@
  .goal-table{
 /*background: linear-gradient(white,#ccf5ff);*/
  }   
+
+ .empty-message{
+    padding-bottom: 10px;
+}
+
+.table-header{
+    background-color: #d3d3d3;
+}

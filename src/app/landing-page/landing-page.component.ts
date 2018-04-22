@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -14,7 +14,7 @@ import { FeatureServiceService } from '../services/feature-service.service';
 export class LandingPageComponent implements OnInit {
 
 accountExists: boolean = false;
-  constructor(private userService: UserService, private router: Router, private featureService: FeatureServiceService) { }
+  constructor(private userService: UserService, private router: Router, private featureService: FeatureServiceService, private elementRef: ElementRef) { }
 
   
 
@@ -33,6 +33,11 @@ accountExists: boolean = false;
   }
 
   ngOnInit() {
+  }
+
+   ngAfterViewInit() {
+    this.elementRef.nativeElement.ownerDocument.body.style.minHeight = "100vh";
+    this.elementRef.nativeElement.ownerDocument.body.style.background = "linear-gradient(#fff,#ccf5ff)";
   }
 
 }

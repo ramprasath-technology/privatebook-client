@@ -1,5 +1,16 @@
+<app-header></app-header>
 <app-navbar></app-navbar>
-<div class="placement">
+<div *ngIf="entriesToDisplay.length === 0" class="welcomeMessage">
+  <div>
+    Oops, no journal entries found :( I’d love to hear your stories!
+  </div>
+  <div>
+    <button class="btn btn-primary" (click)="openEditor()">
+  Add new entry
+  </button>
+  </div>
+</div>
+<div class="placement" *ngIf="entriesToDisplay.length > 0">
   <div class="action-row row float-right">
     <button class="btn btn-primary" (click)="openEditor()">
   Add new entry
@@ -8,20 +19,22 @@
   <br/>
   <br/>
   <main>
-    <div *ngFor="let entry of entriesToDisplay">
-      <div class="diary-entry">
-        <details class="diary-detail">
-          <summary class="diary-summary">{{getDatePart(entry.date)}}
-            <span class="pull-right" (click)="editEntry(entry.entryId)">
+    <div >
+      <div *ngFor="let entry of entriesToDisplay">
+        <div class="diary-entry">
+          <details class="diary-detail">
+            <summary class="diary-summary">{{getDatePart(entry.date)}}
+              <span class="pull-right" (click)="editEntry(entry.entryId)">
               Edit
             </span>
-          </summary>
-          <div [innerHTML]="entry.entry"></div>
-        </details>
+            </summary>
+            <div [innerHTML]="entry.entry"></div>
+          </details>
+        </div>
       </div>
     </div>
   </main>
-  <div class="float-right">
+  <div class="float-right" *ngIf="entriesToDisplay.length > 0">
     <ngb-pagination [collectionSize]="totalLength" (pageChange)="changePage($event)" [(page)]="page" [maxSize]="3" [boundaryLinks]="true"></ngb-pagination>
   </div>
 
@@ -29,3 +42,4 @@
     <ngb-pagination [collectionSize]="totalLength" (pageChange)="changePage($event)" [(page)]="page" [maxSize]="3" [boundaryLinks]="true"></ngb-pagination>
   </div>-->
 </div>
+<app-footer></app-footer>

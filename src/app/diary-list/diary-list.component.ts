@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { Diary } from '../models/diary';
@@ -19,7 +19,7 @@ export class DiaryListComponent implements OnInit {
   entries: Diary[] = [];
   page = 1;
 
-  constructor(private router: Router, private route: ActivatedRoute, private diaryService: DiaryService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private diaryService: DiaryService, private elementRef: ElementRef) { }
 
 
   getDiaryEntries() {
@@ -34,6 +34,7 @@ export class DiaryListComponent implements OnInit {
   }
 
   editEntry(entryId: number){
+    console.log(entryId);
     this.router.navigate(['diary', this.userId, entryId]);
 
   }
@@ -52,6 +53,11 @@ export class DiaryListComponent implements OnInit {
       this.userId = +params['userId'];
       this.getDiaryEntries();
     });
+  }
+
+   ngAfterViewInit() {
+    this.elementRef.nativeElement.ownerDocument.body.style.minHeight = "100vh";
+    this.elementRef.nativeElement.ownerDocument.body.style.background = "linear-gradient(#fff,#ccf5ff)";
   }
 
   openEditor() {

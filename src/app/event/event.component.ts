@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
@@ -20,7 +20,7 @@ export class EventComponent implements OnInit {
   isModalOpen: boolean = false;
   private sub: any;
   private userId: number;
-  successMessage = "Your event has been saved successfully";
+  successMessage = "Yes, we have saved your event";
   errorMessage = "There has been an error in saving your event";
   showSuccess: boolean = false;
   showError: boolean = false;
@@ -31,7 +31,7 @@ export class EventComponent implements OnInit {
   progressValue = 0;
   displayPage: boolean = false;
   
-  constructor(private eventService: EventService, private route: ActivatedRoute, private spinnerService: Ng4LoadingSpinnerService) {
+  constructor(private eventService: EventService, private route: ActivatedRoute, private spinnerService: Ng4LoadingSpinnerService, private elementRef: ElementRef) {
   }
 
 searchEvents(searchForm: NgForm){
@@ -154,6 +154,11 @@ searchEvents(searchForm: NgForm){
       this.userId = +params['userId'];
       this.getEvents();
     });
+  }
+
+   ngAfterViewInit() {
+    this.elementRef.nativeElement.ownerDocument.body.style.minHeight = "100vh";
+    this.elementRef.nativeElement.ownerDocument.body.style.background = "linear-gradient(#fff,#ccf5ff)";
   }
 
 }

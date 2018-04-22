@@ -72,6 +72,12 @@
 .main-content{
 	background: linear-gradient(#fff,#ccf5ff);
 }
+.landing-caption{
+	/*font-weight: ;*/
+	color: #00008b;;
+	padding-bottom: 10px;
+	font-size: 2em;
+}
 
 
 

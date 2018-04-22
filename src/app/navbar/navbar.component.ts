@@ -10,23 +10,34 @@ import { CommonService } from '../services/common.service';
   providers: [CommonService]
 })
 export class NavbarComponent implements OnInit {
-userId: number;
+  userId: number;
   constructor(private commonService: CommonService, private router: Router) { }
 
-  loadFeatures(){
+  /*redirect(route){
+        this.router.navigate([`/${route}`, this.userId]);
+  }*/
+
+  redirect(feature: string) {
+    if (feature === "about" || feature === "contact")
+      this.router.navigate([`/${feature}`]);
+    else
+      this.router.navigate([`/${feature}`, this.userId]);
+
 
   }
 
-  loadAboutUs(){
+
+
+  loadAboutUs() {
 
   }
 
-  loadContactUs(){
-    
+  loadContactUs() {
+
   }
 
   ngOnInit() {
-    
+    this.userId = +sessionStorage.getItem('userId');
   }
 
 }

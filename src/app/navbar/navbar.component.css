@@ -1,0 +1,14 @@
+.navlinks{
+    text-align: center;
+}
+
+.nav-item{
+    cursor: pointer;
+}
+
+@media screen and (min-width: 768px){
+    .navbar-height{
+        height: 6.25vh;
+    }
+}
+

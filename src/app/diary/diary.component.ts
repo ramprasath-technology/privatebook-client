@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { Diary } from '../models/diary';
@@ -24,7 +24,7 @@ export class DiaryComponent implements OnInit {
   save: boolean = true;
   entryToModify: Diary;
 
-  constructor(private router: Router, private route: ActivatedRoute, private diaryService: DiaryService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private diaryService: DiaryService, private elementRef: ElementRef) { }
 
   constructDiaryEntry(): Diary {
     let diaryEntry = new Diary();
@@ -88,6 +88,11 @@ export class DiaryComponent implements OnInit {
       this.entryId = +params['entryId'];
       this.decideAction();
     });
+  }
+
+   ngAfterViewInit() {
+    this.elementRef.nativeElement.ownerDocument.body.style.minHeight = "100vh";
+    this.elementRef.nativeElement.ownerDocument.body.style.background = "linear-gradient(#fff,#ccf5ff)";
   }
 
 }

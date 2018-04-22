@@ -14,12 +14,13 @@ import { GoalService } from '../services/goal.service'
 import { EventService } from '../services/event.service';
 import { StockService } from '../services/stock.service';
 import { DiaryService } from '../services/diary.service';
+import { WeatherService } from '../services/weather.service';
 
 @Component({
   selector: 'app-feature-list',
   templateUrl: './feature-list.component.html',
   styleUrls: ['./feature-list.component.css'],
-  providers: [FeatureServiceService, CommonService, GoalService, EventService, StockService, DiaryService]
+  providers: [FeatureServiceService, CommonService, GoalService, EventService, StockService, DiaryService, WeatherService]
 })
 export class FeatureListComponent implements OnInit {
   private sub: any;
@@ -37,9 +38,35 @@ export class FeatureListComponent implements OnInit {
   showWeather: boolean = false;
   showDiary: boolean = false;
   showFiles: boolean = false;
+  lat: number;
+  lon: number;
+  weatherMessage: string;
 
 
-  constructor(private elementRef: ElementRef, private route: ActivatedRoute, private featureService: FeatureServiceService, private commonService: CommonService, private router: Router, private goalService: GoalService, private eventService: EventService, private stockService: StockService, private diaryService: DiaryService) { }
+  constructor(private elementRef: ElementRef, private route: ActivatedRoute, private featureService: FeatureServiceService, private commonService: CommonService, private router: Router, private goalService: GoalService, private eventService: EventService, private stockService: StockService, private diaryService: DiaryService, private weatherService: WeatherService) { }
+
+  getLocationDetails() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.lat = position.coords.latitude;
+        this.lon = position.coords.longitude;
+        this.getWeatherDetails();
+      });
+    } else {
+
+    }
+  }
+
+
+  getWeatherDetails() {
+    this.weatherService.getWeatherDetails(this.lat, this.lon)
+      .subscribe((response) => {
+        let weather = response.json();
+        this.weatherMessage = `It's ${weather.temperature} degrees right now with ${weather.description}`;
+      }, (error) => {
+        console.log(error);
+      });
+  }
 
   getFeaturesForUser() {
     this.featureService.getFeaturesForUser(this.userId)
@@ -108,14 +135,14 @@ export class FeatureListComponent implements OnInit {
           this.showDiary = true;
           this.getDiaryEntries();
           break;
-       // case "WEA":
-         // this.showWeather = true;
-          //this.getEvents();
-          //break;
+        // case "WEA":
+        // this.showWeather = true;
+        //this.getEvents();
+        //break;
         //case "FIL":
-          //this.showFiles = true;
-          //this.getEvents();
-          //break;
+        //this.showFiles = true;
+        //this.getEvents();
+        //break;
         default:
           break;
       }
@@ -239,7 +266,6 @@ export class FeatureListComponent implements OnInit {
         let entries: Diary[] = response.json();
         if (entries.length > 0)
           this.lastEntry = entries[0].entry.substring(3, 10) + "...";
-          console.log(this.lastEntry);
       });
   }
 
@@ -251,6 +277,7 @@ export class FeatureListComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       this.userId = +params['userId'];
       this.getFeaturesForUser();
+      this.getLocationDetails();
 
     });
   }

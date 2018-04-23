@@ -58,11 +58,11 @@ export class FeatureListComponent implements OnInit {
         console.log(this.lat, this.lon);
         this.getWeatherDetails();
       });
-    }else{
+    }
+    //testing
       this.lat = 30.6109;
       this.lon = -96.3506;
-      this.getWeatherDetails();
-    }
+      this.getWeatherDetails();   
   }
 
   //Getting weather details for current location

@@ -37,6 +37,10 @@ accountExists: boolean = false;
     this.accountExists = false;
   }
 
+  ngOnInit(){
+    
+  }
+
    //Initializing color settings for the page
    ngAfterViewInit() {
     this.elementRef.nativeElement.ownerDocument.body.style.minHeight = "100vh";

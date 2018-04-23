@@ -22,8 +22,16 @@
 /*Style for message displayed when there are not events*/
 .empty-message{
     padding-bottom: 10px;
+    font-family: 'Asap', sans-serif;
 }
 /*Background color for table header*/
 .table-header{
     background-color: #d3d3d3;
+}
+
+.search-button{
+    background-color: #007bff;
+    color: #fff;
+    border-color: #0062cc;
+    cursor: pointer;
 }

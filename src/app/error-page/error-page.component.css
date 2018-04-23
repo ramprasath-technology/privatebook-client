@@ -1,51 +1,28 @@
 
-        * {
-            line-height: 1.2;
-            margin: 0;
-        }
-        html {
-            color: #888;
-            display: table;
-            font-family: sans-serif;
-            height: 100%;
-            text-align: center;
-            width: 100%;
-        }
-        .bo {
-            display: table-cell;
-            vertical-align: middle;
-            margin: 2em auto;
-        }
-		.span1{
+       
+		.first-span{
 			font-size:12em;
 		}
-		.img_span{
+		.img-span{
 			height:10%;
 			width:10em;
 		}
-        /*h1 {
-            color: #555;
-            font-size: 2em;
-            font-weight: 400;
-        }
-        p {
-            margin: 0 auto;
-            width: 280px;
-        }*/
-		.para1{
-			font-size:4em;
-			margin:0em;
-
-		}
-		.para{
+		
+		.message{
 			font-size:2em;
 		}
-        @media only screen and (max-width: 767px) {
-            body, p {
-                width: 95%;
-            }
-            h1 {
-                font-size: 1.5em;
-                margin: 0 0 0.3em;
-            }
+
+        .error-page{
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .mascot-img{
+            height:150px;
+        }
+
+        .home-link{
+            color: #0000ff;
+            text-decoration: underline;
+            cursor: pointer;
         }

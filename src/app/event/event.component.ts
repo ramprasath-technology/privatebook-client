@@ -43,9 +43,9 @@ export class EventComponent implements OnInit {
   searchEvents(searchForm: NgForm) {
     let searchTerms: EventSearchTerms = searchForm.value;
     searchTerms.userId = this.userId;
-    console.log(searchTerms);
     this.eventService.searchEvent(searchTerms)
       .subscribe(response => {
+        this.formatEvents(response.json());
       },
       (error) => {
       });
@@ -77,7 +77,7 @@ export class EventComponent implements OnInit {
     let dateArray: string[] = newEvent.eventDate.split('-');
     let timeArray: string[] = newEvent.eventTime.split(':');
     event.time = new Date();
-    event.time.setFullYear(parseInt(dateArray[0]), parseInt(dateArray[1]), parseInt(dateArray[2]));
+    event.time.setFullYear(parseInt(dateArray[0]), (parseInt(dateArray[1])-1), (parseInt(dateArray[2]) - 1));
     event.time.setHours(parseInt(timeArray[0]));
     event.time.setMinutes(parseInt(timeArray[1]));
     event.eventName = newEvent.eventName;
@@ -117,12 +117,41 @@ export class EventComponent implements OnInit {
       );
   }
 
+  convertDateFormat(min: string): string{
+    let stringFormat = min.split(':');
+    let splicedMin = stringFormat[1].slice(0, stringFormat.indexOf(':'));
+    let hours: number = parseInt(stringFormat[0]);
+    let minutes: number = parseInt(splicedMin);
+    let timeOfDay: string = "AM";
+    let finalHr: string;
+    let finalMin: string;
+
+    if(hours > 12){
+      hours = hours%12;
+      timeOfDay = "PM";
+    }
+    if(hours < 10)
+       finalHr = `0${hours.toString()}`;
+    else
+      finalHr = hours.toString();
+
+    if(minutes < 10)
+      finalMin = `0${minutes.toString()}`;
+    else
+      finalMin = minutes.toString();    
+    return `${finalHr}:${finalMin} ${timeOfDay}`;
+  }
+
   //Format events for pretty display
   formatEvents(events: Event[]) {
     this.assignProgress(80);
     this.events = [];
     events.map((event, index) => {
       event["eventNumber"] = ++index;
+      let stringFormat = event.time.toString().split('T');
+      let date = event.time.toString().split('T')[0];
+      let time = event.time.toString().split('T')[1];
+      event["dateString"] = `${date} ${this.convertDateFormat(time)}`;
       this.events.push(event);
     });
     this.totalLength = this.events.length;

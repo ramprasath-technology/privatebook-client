@@ -17,6 +17,7 @@
 /*Setting style for message shown when there are no goals*/
  .empty-message{
     padding-bottom: 10px;
+    font-family: 'Asap', sans-serif;
 }
 
 /*Setting background color for table header*/

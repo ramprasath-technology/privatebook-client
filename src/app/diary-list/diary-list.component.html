@@ -5,8 +5,8 @@
 
 <!--Content to be displayed when there is not diary entry for user-->
 <div *ngIf="entriesToDisplay.length === 0" class="welcome-message">
-  <div>
-    Oops, no journal entries found :( I’d love to hear your stories!
+  <div class="empty-message">
+    No journal entries found! I’d love to hear your story!
   </div>
   <div>
     <button class="btn btn-primary" (click)="openEditor()">

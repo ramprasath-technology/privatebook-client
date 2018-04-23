@@ -15,40 +15,44 @@ import { FeatureServiceService } from '../services/feature-service.service';
 
 //Creating class for user signup
 export class UserSignupComponent implements OnInit {
-errorMessage: string = "Seems like you are already registered. Mind logging in?";
-showErrorMessage: boolean = false;
-  constructor(private userService: UserService, private featureService : FeatureServiceService, private router: Router) { }
+  errorMessage: string = "Seems like you are already registered. Mind logging in?";
+  showErrorMessage: boolean = false;
+  constructor(private userService: UserService, private featureService: FeatureServiceService, private router: Router) { }
 
-//Create new user
-submitUser(form : NgForm){
+  //Create new user
+  submitUser(form: NgForm) {
     this.userService.createUser(form.value)
       .subscribe(
-        (response) => { 
-          if(response.status === 200 || response.status === 201){
-            console.log(response);
-            let data = response.json();
+      (response) => {
+        if (response.status === 200 || response.status === 201) {
+
+          let data = response.json();
+          if (data !== "Already exists") {
             this.featureService.createFeaturesForUser(data.userId)
               .subscribe(
-                (response) => {
-                  if(response.status === 200){
-                    if(data != null){
+              (response) => {
+                if (response.status === 200) {      
+                  if (data != null) {
                     sessionStorage.setItem('userId', data.userId);
-                    this.router.navigate(['/featurelist',data.userId]);
-                    }else{
-                      this.showErrorMessage = true;
-                    }
-                  }else{
+                    this.router.navigate(['/featurelist', data.userId]);
+                  } else {
                     this.showErrorMessage = true;
                   }
-
-                },
-                (error) => {
+                } else {
                   this.showErrorMessage = true;
                 }
-              );          
+
+              },
+              (error) => {
+                this.showErrorMessage = true;
+              }
+              );
+          }else{
+            this.showErrorMessage = true;
           }
-        },
-        (error) => {}
+        }
+      },
+      (error) => { }
       );
   }
 

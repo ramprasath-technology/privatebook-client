@@ -28,3 +28,8 @@
 .diary-entry{
     padding-bottom: 10px;
 }
+
+.empty-message{
+    padding-bottom: 10px;
+    font-family: 'Asap', sans-serif;
+}

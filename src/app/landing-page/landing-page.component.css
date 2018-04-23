@@ -7,6 +7,7 @@
 	background: linear-gradient(#fff,#ccf5ff);
 	overflow: auto;
 	height: 85vh;
+	padding-bottom: 1vh;
 }
 
 /*Setting style for navigation elements*/

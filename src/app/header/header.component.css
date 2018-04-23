@@ -18,6 +18,7 @@
 /*Applying style for logout*/
 .logout{
     cursor: pointer;
+    text-align: right;
 }
 
 /*Applying style for mascot image*/

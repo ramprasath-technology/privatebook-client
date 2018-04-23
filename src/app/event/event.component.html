@@ -71,12 +71,13 @@
   </div>
   <br/>
   <br/>
+
   <div class="action-row row float-right">
     <form (ngSubmit)="searchEvents(searchForm)" #searchForm="ngForm" ngNativeValidate>
-      <label>Search</label>
-      <input class="" type="date" placeholder="Start Date" name="startDate" ngModel required/>
-      <input class="" type="date" placeholder="End Date" name="endDate" ngModel required/>
-      <button class="" type="submit">
+      <!--<label><b>Search:</b></label>-->
+      <input type="date" placeholder="Start Date" name="startDate" ngModel required/>
+      <input type="date" placeholder="End Date" name="endDate" ngModel required/>
+      <button type="submit" class="search-button">
       Search
     </button>
     </form>
@@ -95,7 +96,7 @@
         <td class="text-center">{{event.eventNumber}}</td>
         <td class="text-left">{{event.eventName}}</td>
         <td class="text-left">{{event.eventDescription}}</td>
-        <td class="text-center">{{event.time}}</td>
+        <td class="text-center">{{event.dateString}}</td>
       </tr>
     </tbody>
   </table>

@@ -74,15 +74,15 @@
         <div class="flex-item" *ngIf="showDiary" (click)="redirect('diarylist')">
             <div class="feature-card">
                 <div class="card card-transform border-primary mb-3 animated tada">
-                    <img *ngIf="lastEntry.length == 0" class="card-img-top" src="../assets/images/feature-list/journal.jpg" alt="Write your journal">
+                    <img *ngIf="entriesToShow.length == 0" class="card-img-top" src="../assets/images/feature-list/journal.jpg" alt="Write your journal">
 
-                    <div *ngIf="lastEntry.length > 0" class="card-header">Diary</div>
-                    <div *ngIf="lastEntry.length > 0" class="card-body">
-                        <ul class="list-group">
-                            <li class="list-group-item">{{lastEntry}}</li>
+                    <div *ngIf="entriesToShow.length > 0" class="card-header">Diary</div>
+                    <div *ngIf="entriesToShow.length > 0" class="card-body">
+                        <ul class="list-group" *ngFor="let entry of entriesToShow">
+                            <li class="list-group-item">{{entry}}</li>
                         </ul>
                     </div>
-                    <div *ngIf="lastEntry.length === 0" class="card-body">
+                    <div *ngIf="entriesToShow.length === 0" class="card-body">
                         <p>
                             Record your beautiful moments here. These memories together make up what is called life!
                         </p>

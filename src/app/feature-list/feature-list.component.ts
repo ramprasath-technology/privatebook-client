@@ -34,6 +34,8 @@ export class FeatureListComponent implements OnInit {
   events: Event[] = [];
   features: Features[] = [];
   stocks: Stock[] = [];
+  entriesToShow: string[] = [];
+  entries: Diary[] = [];
   showEvents: boolean = false;
   showGoals: boolean = false;
   showStocks: boolean = false;
@@ -53,8 +55,13 @@ export class FeatureListComponent implements OnInit {
       navigator.geolocation.getCurrentPosition((position) => {
         this.lat = position.coords.latitude;
         this.lon = position.coords.longitude;
+        console.log(this.lat, this.lon);
         this.getWeatherDetails();
       });
+    }else{
+      this.lat = 30.6109;
+      this.lon = -96.3506;
+      this.getWeatherDetails();
     }
   }
 
@@ -208,7 +215,7 @@ export class FeatureListComponent implements OnInit {
     this.goalService.getGoals(this.userId)
       .subscribe((response) => {
         let goals: Goal[] = response.json();
-        this.goals = goals.splice(0, 2);
+        this.goals = goals.splice(0, 3);
       },
       (error) => {
 
@@ -220,7 +227,7 @@ export class FeatureListComponent implements OnInit {
     this.eventService.getEvents(this.userId)
       .subscribe((response) => {
         let events = response.json();
-        this.events = events.splice(0, 2);
+        this.events = events.splice(0, 3);
       },
       (error) => {
 
@@ -242,9 +249,20 @@ export class FeatureListComponent implements OnInit {
   getDiaryEntries() {
     this.diaryService.getDiaryEntriesByUser(this.userId)
       .subscribe((response) => {
-        let entries: Diary[] = response.json();
-        if (entries.length > 0)
-          this.lastEntry = entries[0].entry.substring(3, 10) + "...";
+        this.entries = response.json();
+        let index = 0;
+        if (this.entries.length > 0){
+        this.entries.forEach( (entry) => {
+          if(index > 2){
+            
+          }
+            else{
+              this.entriesToShow.push(entry.entry.substring(3, 10) + "...");
+              index++;
+            }
+        });
+
+        }
       });
   }
 

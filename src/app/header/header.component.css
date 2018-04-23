@@ -1,31 +1,38 @@
+/*Applying style for landing header*/
 .landing-header{
     height: 10vh;
     margin: 0;
     width:100%;
 }
 
+/*Applying background color for header page*/
 .container-fluid{
     background-color: #008fb3;
 }
 
+/*Applying style for greeting*/
 .greeting{
     cursor: pointer;
 }
 
+/*Applying style for logout*/
 .logout{
     cursor: pointer;
 }
 
+/*Applying style for mascot image*/
 .mascot-img{
     width: 75px;
     height: auto;
     cursor: pointer;
 }
 
+/*Applying style for mascot container*/
 .mascot-img-container{
     display: inline-block;
 }
 
+/*Applying style for signout button container*/
 .signout-button-container{
     display: inline-block;
     text-align: right;
@@ -33,47 +40,55 @@
     padding: 0;
 }
 
+/*Applying padding for signout button*/
 .header-signout-button{
     padding: 5px;
 }
 
+/*Applying style for brand name*/
 .brand-font{
     font-family: 'Comfortaa', cursive;
     font-weight: bold;
 }
 
-@media screen and (min-width: 768px){
-    .brand-font{
-        font-size: 1.5em;
-    }
-    .brand-img{
-    width: 150px;
-    padding-top: 5px;
-}
-}
-
-@media screen and (max-width: 767px){
-    .brand-img{
-    width: 80px;
-    padding-top: 5px;
-}
-.mascot-img{
-    width: 60px;
-    height: auto;
-}
-}
-
+/*Applying style for button*/
 .btn-primary{
-    background-color: orange;
-}
-.btn-primary{
-        background-color: orange;
+    background-color: #ffa500;
 }
 
+/*Applying style for greeting message*/
 .greeting-message{
     font-family: 'Work Sans', sans-serif;
     color: #fff;
 }
+/*Media query for desktop view*/
+@media screen and (min-width: 768px){
+    /*Applying style for brand font*/
+    .brand-font{
+        font-size: 1.5em;
+    }
+    /*Applying style for brand image*/
+    .brand-img{
+        width: 150px;
+        padding-top: 5px;
+    }
+}
+
+/*Media query for mobile view*/
+@media screen and (max-width: 767px){
+    /*Applying style for brand font*/
+    .brand-img{
+        width: 80px;
+        padding-top: 5px;
+    }
+    /*Applying style for mascot image*/
+    .mascot-img{
+        width: 60px;
+        height: auto;
+    }
+}
+
+
 
 
 

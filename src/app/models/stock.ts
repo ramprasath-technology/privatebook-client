@@ -1,3 +1,4 @@
+//Stock class
 export class Stock {
     stockMappingId: number;
     userId: number;

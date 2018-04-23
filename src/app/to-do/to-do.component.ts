@@ -1,3 +1,4 @@
+//Importing components required for goals page
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -14,7 +15,9 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
   providers: [GoalService]
 })
 
+//Creating class for goals page
 export class ToDoComponent implements OnInit {
+  //Variable declaration for goals page
   goals: Goal[] = [];
   goalsToDisplay: Goal[] = [];
   isModalOpen: boolean = false;
@@ -33,25 +36,29 @@ export class ToDoComponent implements OnInit {
   displayPage: boolean = false;
   showCongrats: boolean = false;
 
-
+//Constructor initialization for goals page
   constructor(private goalService: GoalService, private route: ActivatedRoute, private spinnerService: Ng4LoadingSpinnerService, private elementRef: ElementRef) {
   }
 
+//Showing or hiding success message based on user input
   showSuccessMessage() {
     this.showSuccess = true;
     this.showError = false;
   }
 
+//Showing or hiding error message based on user input
   showErrorMessage() {
     this.showError = true;
     this.showSuccess = false;
   }
 
+//Showing or hiding messages based on user input
   resetMessages() {
     this.showError = false;
     this.showSuccess = false;
   }
 
+//Helper function to set default values
   assignGoalDefaults(goal: Goal): Goal {
     goal.isCompleted = false;
     goal.createdDate = new Date();
@@ -59,7 +66,7 @@ export class ToDoComponent implements OnInit {
     return goal;
   }
 
-
+//Save new goal
   saveGoal(form: NgForm) {
     this.showCongrats = false;
     let newGoal: Goal = form.value;
@@ -78,8 +85,8 @@ export class ToDoComponent implements OnInit {
       );
   }
 
-  getGoals() {
-    
+//Get goals for user
+  getGoals() {  
     this.goalService.getGoals(this.userId)
       .subscribe(
       (response) => {
@@ -92,6 +99,7 @@ export class ToDoComponent implements OnInit {
       );
   }
 
+//Display goals in a pretty format
   formatGoals(goals: Goal[]) {
     this.assignProgress(80);
     this.goals = [];
@@ -99,12 +107,11 @@ export class ToDoComponent implements OnInit {
       goal["goalNumber"] = ++index;
       this.goals.push(goal);
     });
-
     this.totalLength = this.goals.length;
-
     this.changePage(1);
   }
 
+//Delete a goal 
   deleteGoal(goalId: number) {
     this.goalService.deleteGoal(goalId)
       .subscribe(
@@ -118,20 +125,24 @@ export class ToDoComponent implements OnInit {
       );
   }
 
+//Close pop-up box
   closeModal() {
     this.resetMessages();
   }
 
+//Assign progress value
   assignProgress(number: number) {
     this.progressValue = number;
   }
 
+//Set pagination
   changePage(pageNumber) {
     let start = pageNumber * 10 - 9 - 1;
     let end = pageNumber * 10;
     this.goalsToDisplay = this.goals.slice(start, end);
   }
 
+//Initializing page
   ngOnInit() {
     this.spinnerService.show();
     this.sub = this.route.params.subscribe(params => {

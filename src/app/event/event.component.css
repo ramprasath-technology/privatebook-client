@@ -1,23 +1,29 @@
+/*Style for setting page margin*/
 .placement{
     margin: 5%;
 }
+
+/*Style for action row*/
 .action-row{
     padding-bottom: 10px;
 }
 
+/*Style for welcome message*/
 .welcomeMessage{
     text-align: center;
     margin: 5%;
 }
 
+/*Style for Add New Event button*/
 .element-display{
     display: inline-block;
 }
 
+/*Style for message displayed when there are not events*/
 .empty-message{
     padding-bottom: 10px;
 }
-
+/*Background color for table header*/
 .table-header{
     background-color: #d3d3d3;
 }

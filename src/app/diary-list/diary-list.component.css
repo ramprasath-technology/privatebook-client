@@ -1,24 +1,30 @@
+/*Setting page margin*/
 .placement{
     margin: 5%;
 }
+/*Setting style for action row*/
 .action-row{
     padding-bottom: 10px;
 }
 
-.welcomeMessage{
+/*Setting style for page's welcome message*/
+.welcome-message{
     text-align: center;
     margin: 5%;
 }
 
+/*Setting style for diary summary element*/
 .diary-summary{
     height: 1.5em;
     background-color: lightblue;
 }
 
+/*Setting style for diary detail element*/
 .diary-detail{
     border: 1px solid black;
 }
 
+/*Setting style for diary entry*/
 .diary-entry{
     padding-bottom: 10px;
 }

@@ -1,3 +1,4 @@
+//Importing components required for diary page
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -11,6 +12,8 @@ import { DiaryService } from '../services/diary.service';
   styleUrls: ['./diary.component.css'],
   providers: [DiaryService]
 })
+
+//Creating class for diary page
 export class DiaryComponent implements OnInit {
   sub: any;
   userId: number;
@@ -24,8 +27,10 @@ export class DiaryComponent implements OnInit {
   save: boolean = true;
   entryToModify: Diary;
 
+  //Constructor initalization
   constructor(private router: Router, private route: ActivatedRoute, private diaryService: DiaryService, private elementRef: ElementRef) { }
 
+  //Helper method to construct diary object
   constructDiaryEntry(): Diary {
     let diaryEntry = new Diary();
     diaryEntry.date = new Date();
@@ -35,10 +40,12 @@ export class DiaryComponent implements OnInit {
     return diaryEntry;
   }
 
+  //Navigating back to diary list
   goBack(){
     this.router.navigate([`diarylist`, this.userId]);
   }
 
+  //Add new diary entry
   addEntry() {
     console.log(this.content);
     let diaryEntry: Diary = this.constructDiaryEntry();
@@ -50,6 +57,7 @@ export class DiaryComponent implements OnInit {
       });
   }
 
+  //Edit diary entry
   editEntry() {
     this.entryToModify.entry = this.content;
     this.diaryService.updateDiaryEntry(this.entryId, this.entryToModify)
@@ -60,10 +68,12 @@ export class DiaryComponent implements OnInit {
       });
   }
 
+  //Reset entry
   resetEntry() {
     this.content = "";
   }
 
+  //Get diary entry
   getEntry() {
     this.diaryService.getDiaryEntry(this.entryId)
       .subscribe((response) => {
@@ -75,6 +85,7 @@ export class DiaryComponent implements OnInit {
       });
   }
 
+  //Decide if it is adding new entry or editing an entry
   decideAction() {
     if (this.entryId !== 0) {
       this.save = false;
@@ -82,6 +93,7 @@ export class DiaryComponent implements OnInit {
     }
   }
 
+  //Initializing page
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.userId = +params['userId'];

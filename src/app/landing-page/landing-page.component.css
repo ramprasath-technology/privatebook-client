@@ -1,83 +1,89 @@
-
-
+/*Setting style for landing page*/
 .landing-body{
 	margin: 0;
 	padding: 0;
 	width: 100%;
 	padding-top: 5vh;
-	background: linear-gradient(white,#ccf5ff);
+	background: linear-gradient(#fff,#ccf5ff);
 	overflow: auto;
 	height: 85vh;
 }
 
-
+/*Setting style for navigation elements*/
 .anchor{
-	color: blue;
+	color: #0000ff;
 	cursor: pointer;
 }
 
+/*Setting style for mouse hover*/
 .anchor:hover{
 	text-decoration: underline;
 }
 
+/*Setting style for account form*/
 .account-form{
 	padding: 0;
 	margin: 0 auto;
 }
 
-@media screen and (max-width: 767px){
-	.main-img-container{
-		display: none;
-	}
-
-	.form-container{
-		width: 100%;
-	}
-
-	.account-form{
-		width: 80%;
-	}
+/*Setting style for action button*/
+.btn-primary{
+    background-color: #ffa500;
 }
 
-@media screen and (min-width: 768px){
-	.main-img-container{
-		width: 60%;
-		text-align: center;
-	}
-
-	.form-container{
-		width: 40%;
-	}
-
-	.main-img{
-		width: 80%;;
-		height: auto;
-	}
-
-	.account-form{
-		width: 60%;
-	}
+/*Setting style for main content*/
+.main-content{
+	background: linear-gradient(#fff,#ccf5ff);
 }
 
+/*Setting style for landing caption*/
+.landing-caption{
+	color: #00008b;;
+	padding-bottom: 10px;
+	font-size: 2em;
+}
+
+/*Setting style for row class*/
 .row{
 	width: 100%;
 	margin: 0;
 	padding: 0;
 }
 
-.btn-primary{
-    background-color: orange;
+/*Media query for mobile view*/
+@media screen and (max-width: 767px){
+	.main-img-container{
+		display: none;
+	}
+	.form-container{
+		width: 100%;
+	}
+	.account-form{
+		width: 80%;
+	}
 }
 
-.main-content{
-	background: linear-gradient(#fff,#ccf5ff);
+/*Media query for desktop view*/
+@media screen and (min-width: 768px){
+	.main-img-container{
+		width: 60%;
+		text-align: center;
+	}
+	.form-container{
+		width: 40%;
+	}
+	.main-img{
+		width: 80%;;
+		height: auto;
+	}
+	.account-form{
+		width: 60%;
+	}
 }
-.landing-caption{
-	/*font-weight: ;*/
-	color: #00008b;;
-	padding-bottom: 10px;
-	font-size: 2em;
-}
+
+
+
+
 
 
 

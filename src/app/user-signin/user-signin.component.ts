@@ -1,3 +1,4 @@
+/*Importing components necessary for user sign in page*/ 
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -11,7 +12,10 @@ import { ResetPassword } from '../models/reset-password';
   styleUrls: ['./user-signin.component.css'],
   providers: [UserService]
 })
+
+//Creating class for user sign in page
 export class UserSigninComponent implements OnInit {
+  //Variable declaration
   readonly errorMessage: string = "Oops! Your email and password do not match. Mind trying again?";
   readonly emailErrorMessage: string = "Hmmm, seems like we are unaware of this email. Wanna sign up as new user?";
   readonly securityErrorMessage: string = "Well, that's not quite right! Wanna try again?";
@@ -25,11 +29,13 @@ export class UserSigninComponent implements OnInit {
   securityQuestion: string;
   heading: string = "Sign In";
 
+  //Constructor initialization
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
   }
 
+  //Login user
   loginUser(form: NgForm) {
     console.log('enter');
     this.userService.loginUser(form.value)
@@ -53,6 +59,7 @@ export class UserSigninComponent implements OnInit {
       )
   }
 
+  //Give password reset option
   showReset() {
     this.showEmailVerification = true;
     this.showErrorMessage = false;
@@ -60,6 +67,7 @@ export class UserSigninComponent implements OnInit {
     this.heading = "Verify Email";
   }
 
+  //Reset password
   resetPassword(resetForm: NgForm) {
     let password: ResetPassword = resetForm.value;
     password.userId = this.userId;
@@ -78,6 +86,7 @@ export class UserSigninComponent implements OnInit {
       });
   }
 
+  //Verify user email
   verifyUser(form: NgForm) {
     this.showEmailVerificationError = false;
     let email = form.value.email;

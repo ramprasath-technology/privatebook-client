@@ -1,3 +1,4 @@
+//Importing component required for navigation bar
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -9,14 +10,16 @@ import { CommonService } from '../services/common.service';
   styleUrls: ['./navbar.component.css'],
   providers: [CommonService]
 })
+
+//Creating class for navigation bar
 export class NavbarComponent implements OnInit {
+  //Variable declaration
   userId: number;
+
+  //Constructor initialization
   constructor(private commonService: CommonService, private router: Router) { }
 
-  /*redirect(route){
-        this.router.navigate([`/${route}`, this.userId]);
-  }*/
-
+  //Routing according to user selection
   redirect(feature: string) {
     if (feature === "about" || feature === "contact")
       this.router.navigate([`/${feature}`]);
@@ -26,16 +29,7 @@ export class NavbarComponent implements OnInit {
 
   }
 
-
-
-  loadAboutUs() {
-
-  }
-
-  loadContactUs() {
-
-  }
-
+  //Initializing page with session variable
   ngOnInit() {
     this.userId = +sessionStorage.getItem('userId');
   }

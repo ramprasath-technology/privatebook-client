@@ -2,6 +2,8 @@
   Sign Up
 </h2>
 <div class="errorMessage" class="alert alert-danger animated tada" *ngIf="showErrorMessage">{{errorMessage}}</div>
+
+<!--User signup form-->
 <form (ngSubmit)="submitUser(signupForm)" #signupForm="ngForm" ngNativeValidate>
   <div class="form-group">
     <label for="name">Name</label>

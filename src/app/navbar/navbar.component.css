@@ -1,11 +1,14 @@
+/*Applying style for navigation link*/
 .navlinks{
     text-align: center;
 }
 
+/*Applying style for navigation item*/
 .nav-item{
     cursor: pointer;
 }
 
+/*Media query for desktop view*/
 @media screen and (min-width: 768px){
     .navbar-height{
         height: 6.25vh;

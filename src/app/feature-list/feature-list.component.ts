@@ -1,3 +1,4 @@
+//Importing the components necessary for feature list
 import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -22,16 +23,17 @@ import { WeatherService } from '../services/weather.service';
   styleUrls: ['./feature-list.component.css'],
   providers: [FeatureServiceService, CommonService, GoalService, EventService, StockService, DiaryService, WeatherService]
 })
+
+//Creating class for feature list
 export class FeatureListComponent implements OnInit {
+  //Variable declaration
   private sub: any;
   private userId: number;
   lastEntry: string = "";
-
   goals: Goal[] = [];
   events: Event[] = [];
   features: Features[] = [];
   stocks: Stock[] = [];
-
   showEvents: boolean = false;
   showGoals: boolean = false;
   showStocks: boolean = false;
@@ -42,9 +44,10 @@ export class FeatureListComponent implements OnInit {
   lon: number;
   weatherMessage: string;
 
-
+  //Constructor initialization
   constructor(private elementRef: ElementRef, private route: ActivatedRoute, private featureService: FeatureServiceService, private commonService: CommonService, private router: Router, private goalService: GoalService, private eventService: EventService, private stockService: StockService, private diaryService: DiaryService, private weatherService: WeatherService) { }
 
+  //Getting current location of user
   getLocationDetails() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -52,12 +55,10 @@ export class FeatureListComponent implements OnInit {
         this.lon = position.coords.longitude;
         this.getWeatherDetails();
       });
-    } else {
-
     }
   }
 
-
+  //Getting weather details for current location
   getWeatherDetails() {
     this.weatherService.getWeatherDetails(this.lat, this.lon)
       .subscribe((response) => {
@@ -68,6 +69,7 @@ export class FeatureListComponent implements OnInit {
       });
   }
 
+  //Getting all the features for the user
   getFeaturesForUser() {
     this.featureService.getFeaturesForUser(this.userId)
       .subscribe(
@@ -82,6 +84,7 @@ export class FeatureListComponent implements OnInit {
       )
   }
 
+  //Add a new feature
   addFeature(featureName: string) {
     let feature = this.findFeatureToModify(featureName)[0];
     let mappingObj = { "userId": this.userId, "featureId": feature.featureId };
@@ -95,6 +98,7 @@ export class FeatureListComponent implements OnInit {
       });
   }
 
+  //Remove a feature
   removeFeature(featureName: string) {
     let feature = this.findFeatureToModify(featureName)[0];
     let mappingObj = { "userId": this.userId, "featureId": feature.featureId };
@@ -108,6 +112,7 @@ export class FeatureListComponent implements OnInit {
       });
   }
 
+  //Find feature that has been modified by user
   findFeatureToModify(featureName: string): Features[] {
     console.log(this.features);
     let featureToModify: Features[] = this.features.filter((featureObj) => {
@@ -116,6 +121,7 @@ export class FeatureListComponent implements OnInit {
     return featureToModify;
   }
 
+  //Set settings for displaying features
   setFeatureSettings() {
     this.features.forEach((featureObj) => {
       switch (featureObj.feature.shortName) {
@@ -135,20 +141,13 @@ export class FeatureListComponent implements OnInit {
           this.showDiary = true;
           this.getDiaryEntries();
           break;
-        // case "WEA":
-        // this.showWeather = true;
-        //this.getEvents();
-        //break;
-        //case "FIL":
-        //this.showFiles = true;
-        //this.getEvents();
-        //break;
         default:
           break;
       }
     });
   }
 
+  //Determine action to be taken based on user input
   determineAction(featureName: string) {
     switch (featureName) {
       case "GOA":
@@ -175,25 +174,12 @@ export class FeatureListComponent implements OnInit {
         else
           this.removeFeature(featureName);
         break;
-
-      /*case "STO":
-        this.showStocks = param;
-        break;
-      case "DIA":
-        this.showDiary = param;
-        break;
-      case "WEA":
-        this.showWeather = param;
-        break;
-      case "FIL":
-        this.showFiles = param;
-        //this.getEvents();
-        break;*/
       default:
         break;
     }
   }
 
+  //Refresh screen
   refreshDisplay(featureName: string) {
     switch (featureName) {
       case "GOA":
@@ -212,22 +198,12 @@ export class FeatureListComponent implements OnInit {
         if (this.showDiary)
           this.getDiaryEntries();
         break;
-      /*case "STO":
-        this.showStocks = param;
-        break;
-      
-      case "WEA":
-        this.showWeather = param;
-        break;
-      case "FIL":
-        this.showFiles = param;
-        //this.getEvents();
-        break;*/
       default:
         break;
     }
   }
 
+  //Get goals for user
   getGoals() {
     this.goalService.getGoals(this.userId)
       .subscribe((response) => {
@@ -239,6 +215,7 @@ export class FeatureListComponent implements OnInit {
       });
   }
 
+  //Get events for user
   getEvents() {
     this.eventService.getEvents(this.userId)
       .subscribe((response) => {
@@ -250,6 +227,7 @@ export class FeatureListComponent implements OnInit {
       });
   }
 
+  //Get stocks for user
   getStockEntries() {
     this.stockService.getStockForUser(this.userId)
       .subscribe((response) => {
@@ -260,6 +238,7 @@ export class FeatureListComponent implements OnInit {
       });
   }
 
+  //Get diary entries for user
   getDiaryEntries() {
     this.diaryService.getDiaryEntriesByUser(this.userId)
       .subscribe((response) => {
@@ -269,16 +248,17 @@ export class FeatureListComponent implements OnInit {
       });
   }
 
+  //Redirect to particular feature's page
   redirect(feature) {
     this.router.navigate([`/${feature}`, this.userId]);
   }
 
+  //Initialize user id on page load
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.userId = +params['userId'];
       this.getFeaturesForUser();
       this.getLocationDetails();
-
     });
   }
 

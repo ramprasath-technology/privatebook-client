@@ -1,5 +1,8 @@
+<!--Including header selector-->
 <app-header></app-header>
+<!--Including navigation selector-->
 <app-navbar></app-navbar>
+<!--Main content for adding new diary entry-->
 <div class="alert alert-success text-center" role="alert" *ngIf="showSuccess">
   {{successMessage}}
   <span class="back-link" (click)="goBack()">View your precious memories.</span>
@@ -22,4 +25,5 @@
    Reset
  </button>
 </div>
+<!--Including footer selector-->
 <app-footer></app-footer>

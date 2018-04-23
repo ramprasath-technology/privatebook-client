@@ -1,3 +1,4 @@
+//Goal class
 export class Goal {
     goalId: number;
     goalDescription: string;

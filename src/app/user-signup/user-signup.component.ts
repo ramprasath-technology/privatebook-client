@@ -1,3 +1,4 @@
+//Importing components requird for user signup page
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -11,11 +12,14 @@ import { FeatureServiceService } from '../services/feature-service.service';
   templateUrl: './user-signup.component.html',
   styleUrls: ['./user-signup.component.css']
 })
+
+//Creating class for user signup
 export class UserSignupComponent implements OnInit {
 errorMessage: string = "Seems like you are already registered. Mind logging in?";
 showErrorMessage: boolean = false;
   constructor(private userService: UserService, private featureService : FeatureServiceService, private router: Router) { }
 
+//Create new user
 submitUser(form : NgForm){
     this.userService.createUser(form.value)
       .subscribe(

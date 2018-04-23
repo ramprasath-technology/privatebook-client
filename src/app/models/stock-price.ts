@@ -1,3 +1,4 @@
+//Stock price class
 export class StockPrice {
     symbol: string;
     currentPrice: number;

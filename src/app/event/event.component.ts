@@ -1,3 +1,4 @@
+//Importing components to be used by event page
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -14,7 +15,10 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
   styleUrls: ['./event.component.css'],
   providers: [EventService, Ng4LoadingSpinnerService]
 })
+
+//Creating class for event page
 export class EventComponent implements OnInit {
+  //Variable declaration
   events: Event[] = [];
   eventsToDisplay: Event[] = [];
   isModalOpen: boolean = false;
@@ -30,46 +34,50 @@ export class EventComponent implements OnInit {
   page: number = 1;
   progressValue = 0;
   displayPage: boolean = false;
-  
+
+  //Constructor initialization
   constructor(private eventService: EventService, private route: ActivatedRoute, private spinnerService: Ng4LoadingSpinnerService, private elementRef: ElementRef) {
   }
 
-searchEvents(searchForm: NgForm){
-  //console.log(searchForm);
-  let searchTerms : EventSearchTerms = searchForm.value;
-  searchTerms.userId = this.userId;
-  console.log(searchTerms);
-  this.eventService.searchEvent(searchTerms)
-    .subscribe(response => {
-      console.log(response.json());
-    },
-    (error) => {
-      console.log(error);
-    });
-}
+  //Search events based on date
+  searchEvents(searchForm: NgForm) {
+    let searchTerms: EventSearchTerms = searchForm.value;
+    searchTerms.userId = this.userId;
+    console.log(searchTerms);
+    this.eventService.searchEvent(searchTerms)
+      .subscribe(response => {
+      },
+      (error) => {
+      });
+  }
+
+  //Show success message on saving event
   showSuccessMessage() {
     this.showSuccess = true;
     this.showError = false;
   }
 
+  //Show error message is event is not saved
   showErrorMessage() {
     this.showError = true;
     this.showSuccess = false;
   }
 
+  //Reset success and error messages
   resetMessages() {
     this.showError = false;
     this.showSuccess = false;
   }
 
+  //Helper function to assign defaults
   assignEventDefaults(newEvent: any): Event {
     let event = new Event();
     event.userId = this.userId;
-    let eventDate : Date = newEvent.eventDate;
+    let eventDate: Date = newEvent.eventDate;
     let dateArray: string[] = newEvent.eventDate.split('-');
     let timeArray: string[] = newEvent.eventTime.split(':');
     event.time = new Date();
-    event.time.setFullYear(parseInt(dateArray[0]),parseInt(dateArray[1]),parseInt(dateArray[2]));
+    event.time.setFullYear(parseInt(dateArray[0]), parseInt(dateArray[1]), parseInt(dateArray[2]));
     event.time.setHours(parseInt(timeArray[0]));
     event.time.setMinutes(parseInt(timeArray[1]));
     event.eventName = newEvent.eventName;
@@ -77,7 +85,7 @@ searchEvents(searchForm: NgForm){
     return event;
   }
 
-
+  //Save a new event
   saveEvent(form: NgForm) {
     let newEvent = form.value;
     newEvent = this.assignEventDefaults(newEvent);
@@ -95,8 +103,8 @@ searchEvents(searchForm: NgForm){
       );
   }
 
+  //Get all events for a user
   getEvents() {
-    
     this.eventService.getEvents(this.userId)
       .subscribe(
       (response) => {
@@ -109,6 +117,7 @@ searchEvents(searchForm: NgForm){
       );
   }
 
+  //Format events for pretty display
   formatEvents(events: Event[]) {
     this.assignProgress(80);
     this.events = [];
@@ -116,12 +125,11 @@ searchEvents(searchForm: NgForm){
       event["eventNumber"] = ++index;
       this.events.push(event);
     });
-
     this.totalLength = this.events.length;
-
     this.changePage(1);
   }
 
+  //Delete an event
   deleteEvent(eventId: number) {
     this.eventService.deleteEvent(eventId)
       .subscribe(
@@ -134,20 +142,24 @@ searchEvents(searchForm: NgForm){
       );
   }
 
+  //Close event creation pop-up
   closeModal() {
     this.resetMessages();
   }
 
+  //Assign progress
   assignProgress(number: number) {
     this.progressValue = number;
   }
 
+  //Pagination
   changePage(pageNumber) {
     let start = pageNumber * 10 - 9 - 1;
     let end = pageNumber * 10;
     this.eventsToDisplay = this.events.slice(start, end);
   }
 
+  //Initialize page
   ngOnInit() {
     this.spinnerService.show();
     this.sub = this.route.params.subscribe(params => {
@@ -156,7 +168,7 @@ searchEvents(searchForm: NgForm){
     });
   }
 
-   ngAfterViewInit() {
+  ngAfterViewInit() {
     this.elementRef.nativeElement.ownerDocument.body.style.minHeight = "100vh";
     this.elementRef.nativeElement.ownerDocument.body.style.background = "linear-gradient(#fff,#ccf5ff)";
   }

@@ -1,15 +1,16 @@
-
-
+/*Applying style for main content*/
 .main-about-img-div{
     text-align: center;
 }
 
+/*Applying style for main image*/
 .main-about-img{
     height: auto;
     margin: 0 auto;
     width: 100%;
 }
 
+/*Applying style for CSS3 Flexbox container*/
 .flex-container {
   display: flex;
   flex-direction: row;
@@ -18,45 +19,23 @@
    padding-top: 25px;;
 }
 
-@media screen and (max-width: 767px){
-    .flex-item{
-        flex-basis: 80%;
-    }
-    .feature-selection{
-    width: 80%;
-    margin: auto;
-}
-}
-
-@media screen and (min-width: 768px){
-    .flex-item{
-        flex-basis: 200px;
-    }
-    .card{
-        height: 300px;
-    }
-    .feature-selection{
-    width: 96.500000000000000000000%;
-    margin: auto;
-}
-.main-about-img{
-max-height: 100vh;
-}
-}
-
+/*Applying style for about us card*/
 .about-us-card-body{
     text-align: center;
 }
 
+/*Applying style for team div*/
 .team{
     text-align: center;
 }
 
+/*Applying style for mission statement*/
 .mission{
     text-align: center;
     padding-top: 1vh;
 }
 
+/*Applying style for about us message*/
 .about-us-message{
     text-align: center;
     padding-top: 50px;
@@ -65,7 +44,38 @@ max-height: 100vh;
     padding-right: 20px;
 }
 
-.about-us-div{
-  
-    /*height: 200px;*/
+/*Media query for mobile view*/
+@media screen and (max-width: 767px){
+    /*Style for CSS3 flex item*/
+    .flex-item{
+        flex-basis: 80%;
+    }
+    /*Applying style for feature selection*/
+    .feature-selection{
+        width: 80%;
+        margin: auto;
+    }
 }
+
+/*Media query for desktop view*/
+@media screen and (min-width: 768px){
+    /*Applying style for CSS3 flex item*/
+    .flex-item{
+        flex-basis: 200px;
+    }
+    /*Applying style for card*/
+    .card{
+        height: 300px;
+    }
+    /*Applying style for main content*/
+    .feature-selection{
+        width: 96.500000000000000000000%;
+        margin: auto;
+    }
+    .main-about-img{
+        max-height: 100vh;
+    }
+}
+
+
+

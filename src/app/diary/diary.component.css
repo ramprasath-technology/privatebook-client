@@ -1,3 +1,4 @@
+/*Implementing style for diary entry page*/
 .diary-editor{
     width: 80%;
     padding-top: 20px;
@@ -5,8 +6,9 @@
     margin: 0 auto;
 }
 
+/*Style for navigation link*/
 .back-link{
-    color: blue;
+    color: #0000ff;
     text-decoration: underline;
     cursor: pointer;
 }

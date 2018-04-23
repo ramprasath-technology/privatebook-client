@@ -1,6 +1,7 @@
 <h2>
   {{heading}}
 </h2>
+<!--Login form-->
 <div class="errorMessage" class="alert alert-danger animated tada" *ngIf="showErrorMessage">{{errorMessage}}</div>
 <form *ngIf="showLogin" (ngSubmit)="loginUser(signinForm)" #signinForm="ngForm" ngNativeValidate>
   <div class="form-group">
@@ -22,6 +23,8 @@
 <div class="alert alert-danger animated tada" role="alert" *ngIf="showEmailVerificationError && showEmailVerification">
   {{emailErrorMessage}}
 </div>
+
+<!--Forgot password form-->
 <form *ngIf="showEmailVerification" (ngSubmit)="verifyUser(userVerificationForm)" #userVerificationForm="ngForm" ngNativeValidate>
   <div class="form-group">
     <label for="email">Email</label>
@@ -34,13 +37,12 @@
   {{securityErrorMessage}}
 </div>
 
+<!-- Password reset form-->
 <form *ngIf="showPasswordReset" (ngSubmit)="resetPassword(passwordResetForm)" #passwordResetForm="ngForm" ngNativeValidate>
     <div class="form-group">
     <label for="securityQuestion">Security Question</label>
     <p name="securityQuestion"> <b>{{securityQuestion}} </b> </p>
   </div>
-    
-
   
   <div class="form-group">
     <label for="securityAnswer">Security Answer</label>

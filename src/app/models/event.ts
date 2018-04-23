@@ -1,3 +1,4 @@
+//Event class
 export class Event {
     eventId: number;
     userId: number;

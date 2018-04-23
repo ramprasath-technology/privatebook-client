@@ -1,3 +1,4 @@
+//Importing components necessary for stock page
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
@@ -15,7 +16,10 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
   styleUrls: ['./stock.component.css'],
   providers: [StockService, Ng4LoadingSpinnerService]
 })
+
+//Creating class for stock page
 export class StockComponent implements OnInit {
+  //Variable declaration
   sub: any;
   userId: number;
   stocks: Stock[] = [];
@@ -29,9 +33,11 @@ export class StockComponent implements OnInit {
   showExists: boolean = false;
   page: number = 1;
   totalLength: number;
+
+  //Constructor initialization
   constructor(private route: ActivatedRoute, private stockService: StockService, private loadingSpinner: Ng4LoadingSpinnerService, private elementRef: ElementRef) { }
 
-
+  //Helper method to construct stock object
   constructStock(symbol: string): Stock {
     let stock = new Stock();
     stock.stockSymbol = symbol;
@@ -39,6 +45,7 @@ export class StockComponent implements OnInit {
     return stock;
   }
 
+  //Add new stock 
   addStockForUser(form: NgForm) {
     let stock: Stock = form.value;
     stock.userId = this.userId;
@@ -46,7 +53,6 @@ export class StockComponent implements OnInit {
       .subscribe((response) => {
         this.resetMessages();
         if (response.json() === "Already Exists") {
-
           this.showExists = true;
           this.loadingSpinner.hide();
         } else {
@@ -61,6 +67,7 @@ export class StockComponent implements OnInit {
       });
   }
 
+  //Get stock for users
   getStocksForUser() {
     this.loadingSpinner.show();
     this.stockService.getStockForUser(this.userId)
@@ -79,6 +86,7 @@ export class StockComponent implements OnInit {
       });
   }
 
+//Format date for pretty display
   formatDate(): string {
     let date = new Date();
     let year = date.getFullYear().toString();
@@ -94,6 +102,7 @@ export class StockComponent implements OnInit {
     return formattedDate;
   }
 
+//Delete stock on the go
   deleteStockDynamically(stockMappingId: number) {
     this.stockService.deleteStock(stockMappingId)
       .subscribe((response) => {
@@ -103,6 +112,7 @@ export class StockComponent implements OnInit {
       });
   }
 
+//Delete stock
   deleteStock(stockMappingId: number) {
     this.stockService.deleteStock(stockMappingId)
       .subscribe((Response) => {
@@ -112,6 +122,7 @@ export class StockComponent implements OnInit {
       });
   }
 
+//Get stock price
   getStockPrice() {
     this.stockPrice = [];
     this.stocks.forEach((stock) => {
@@ -147,12 +158,14 @@ export class StockComponent implements OnInit {
     });
   }
 
+//Reset messages
   resetMessages() {
     this.showError = false;
     this.showSuccess = false;
     this.showExists = false;
   }
 
+//Pagination
   changePage(pageNumber) {
     let start = pageNumber * 10 - 9 - 1;
     let end = pageNumber * 10;
@@ -162,6 +175,7 @@ export class StockComponent implements OnInit {
     this.loadingSpinner.hide();
   }
 
+//Close pop-up
   closeModal() {
     this.resetMessages();
     this.getStocksForUser();
@@ -171,6 +185,7 @@ export class StockComponent implements OnInit {
     this.getStocksForUser();
   }
 
+//Initializing page
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.userId = +params['userId'];

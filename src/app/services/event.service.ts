@@ -11,6 +11,7 @@ export class EventService {
 
   constructor(private http: Http) { }
 
+  //Submit event for saving
   submitEvent(event: Event){
     let url = Common.BASE_API_URL;
     let completeUrl = `${url}api/events`;
@@ -18,6 +19,7 @@ export class EventService {
     return this.http.post(completeUrl, event);
   }
 
+  //Get events for user
   getEvents(userId: number){
     let url = Common.BASE_API_URL;
     let completeUrl = `${url}api/events/user/${userId}`;
@@ -25,6 +27,7 @@ export class EventService {
     return this.http.get(completeUrl);
   }
 
+  //Delete particular event
   deleteEvent(eventId: number){
     let url = Common.BASE_API_URL;
     let completeUrl = `${url}api/events/${eventId}`;
@@ -32,6 +35,7 @@ export class EventService {
     return this.http.delete(completeUrl);
   }
 
+  //Search events
   searchEvent(searchTerms : EventSearchTerms){
     let url = Common.BASE_API_URL;
     let completeUrl = `${url}api/Events/search/${searchTerms.startDate}/${searchTerms.endDate}/${searchTerms.userId}`;

@@ -1,22 +1,27 @@
+/*Applying style for landing header*/ 
 .landing-header{
     height: 10vh;
     margin: 0;
     width:100%;
 }
 
+/*Applying background color for header*/
 .container-fluid{
     background-color: #008fb3;
 }
 
+/*Applying style for mascot image*/
 .mascot-img{
     width: 75px;
     height: auto;
 }
 
+/*Applying style for mascot container*/
 .mascot-img-container{
     display: inline-block;
 }
 
+/*Applying style for sign-in button*/
 .signin-button-container{
     display: inline-block;
     text-align: right;
@@ -24,41 +29,46 @@
     padding: 0;
 }
 
+/*Applying styles for header sign-in button*/
 .header-signin-button{
     padding: 5px;
 }
 
+/*Applying style for brand name*/
 .brand-font{
     font-family: 'Comfortaa', cursive;
     font-weight: bold;
 }
 
+/*Applying style for button*/
+.btn-primary{
+    background-color: #ffa500;
+}
+
+/*Media query for desktop view*/
 @media screen and (min-width: 768px){
     .brand-font{
         font-size: 1.5em;
     }
     .brand-img{
-    width: 150px;
-    padding-top: 5px;
-}
+        width: 150px;
+        padding-top: 5px;
+    }
 }
 
+/*Media query for mobile view*/
 @media screen and (max-width: 767px){
     .brand-img{
     width: 80px;
     padding-top: 5px;
-}
+    }
 .mascot-img{
     width: 60px;
     height: auto;
-}
+    }
 }
 
-.btn-primary{
-    background-color: orange;
-}
-.btn-primary{
-        background-color: orange;
-}
+
+
 
 

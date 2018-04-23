@@ -1,6 +1,10 @@
+<!--Including header selector-->
 <app-header>
 </app-header>
-<app-navbar></app-navbar>
+<!--Including navigation selector-->
+<app-navbar>
+</app-navbar>
+<!--Main content of Feature List page-->
 <div class="main-content">
     <div class="weather-greeting">
         {{weatherMessage}}
@@ -20,15 +24,10 @@
             <span>
         <input type="checkbox" [(ngModel)]="showDiary"/>Diary
         </span>
-            <!--<span>
-        <input type="checkbox" [(ngModel)]="showWeather"/>Weather
-        </span>
-            <span>
-        <input type="checkbox" [(ngModel)]="showFiles"/>Files
-        </span>-->
         </div>
     </details>
 
+    <!--Card for goals-->
     <div class="flex-container">
         <div class="flex-item" *ngIf="showGoals">
             <div class="feature-card" (click)="redirect('todo')">
@@ -48,6 +47,8 @@
                 </div>
             </div>
         </div>
+
+        <!--Card for events-->
         <div class="flex-item" *ngIf="showEvents">
             <div class="feature-card" (click)="redirect('event')">
                 <div class="card card-transform border-primary mb-3 animated tada">
@@ -65,10 +66,11 @@
                             Life is a collection of meaningful events! Track your events here.
                         </p>
                     </div>
-
                 </div>
             </div>
         </div>
+
+        <!--Card for diary-->
         <div class="flex-item" *ngIf="showDiary" (click)="redirect('diarylist')">
             <div class="feature-card">
                 <div class="card card-transform border-primary mb-3 animated tada">
@@ -88,6 +90,8 @@
                 </div>
             </div>
         </div>
+
+        <!--Card for stock-->
         <div class="flex-item" *ngIf="showStocks" (click)="redirect('stock')">
             <div class="feature-card">
                 <div class="card card-transform border-primary mb-3 animated tada">
@@ -107,28 +111,9 @@
                 </div>
             </div>
         </div>
-        <!--<div class="flex-item" *ngIf="showWeather">
-            <div class="feature-card">
-                <div class="card border-primary mb-3">
-                    <div class="card-header">Header</div>
-                    <div class="card-body text-primary">
-                        <h5 class="card-title">Primary card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="flex-item" *ngIf="showFiles">
-            <div class="feature-card">
-                <div class="card border-primary mb-3">
-                    <div class="card-header">Header</div>
-                    <div class="card-body text-primary">
-                        <h5 class="card-title">Primary card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                </div>
-            </div>
-        </div>-->
     </div>
 </div>
-<app-footer></app-footer>
+<!--Including footer selector-->
+<app-footer>
+
+</app-footer>

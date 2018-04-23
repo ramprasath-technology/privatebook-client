@@ -1,3 +1,4 @@
+//Importing components required for contact us page
 import { Component, OnInit, ElementRef } from '@angular/core';
 
 @Component({
@@ -5,8 +6,11 @@ import { Component, OnInit, ElementRef } from '@angular/core';
   templateUrl: './contact-us.component.html',
   styleUrls: ['./contact-us.component.css']
 })
+
+//Creating class for contact us page
 export class ContactUsComponent implements OnInit {
 
+  //Constructor initialization
   constructor(private elementRef: ElementRef) { }
 
   ngOnInit() {

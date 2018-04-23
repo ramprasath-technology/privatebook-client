@@ -1,11 +1,10 @@
-.error-message{
-    color: red;
-}
 
+/*Applying style for button*/
 .btn-primary{
-    background-color: orange;
+    background-color: #ffa500;
 }
 
+/*Applying style for forgot passwork link*/
 .forgot-password-link{
     color: blue;
     text-decoration: underline;

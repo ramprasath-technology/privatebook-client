@@ -1,3 +1,4 @@
+//Features class
 export class Features {
     feature: Feature;
     featureId: number;

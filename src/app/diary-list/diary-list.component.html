@@ -1,6 +1,10 @@
+<!--Including header selector-->
 <app-header></app-header>
+<!--Including navigation bar selector-->
 <app-navbar></app-navbar>
-<div *ngIf="entriesToDisplay.length === 0" class="welcomeMessage">
+
+<!--Content to be displayed when there is not diary entry for user-->
+<div *ngIf="entriesToDisplay.length === 0" class="welcome-message">
   <div>
     Oops, no journal entries found :( I’d love to hear your stories!
   </div>
@@ -10,6 +14,8 @@
   </button>
   </div>
 </div>
+
+<!--Content to be displayed there are diary entries for user-->
 <div class="placement" *ngIf="entriesToDisplay.length > 0">
   <div class="action-row row float-right">
     <button class="btn btn-primary" (click)="openEditor()">
@@ -34,12 +40,10 @@
       </div>
     </div>
   </main>
+  <!--Pagination-->
   <div class="float-right" *ngIf="entriesToDisplay.length > 0">
     <ngb-pagination [collectionSize]="totalLength" (pageChange)="changePage($event)" [(page)]="page" [maxSize]="3" [boundaryLinks]="true"></ngb-pagination>
   </div>
-
-  <!--<div class="float-right">
-    <ngb-pagination [collectionSize]="totalLength" (pageChange)="changePage($event)" [(page)]="page" [maxSize]="3" [boundaryLinks]="true"></ngb-pagination>
-  </div>-->
 </div>
+<!--Including footer selector-->
 <app-footer></app-footer>

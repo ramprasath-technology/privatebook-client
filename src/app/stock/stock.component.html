@@ -1,6 +1,9 @@
+<!--Including header selector-->
 <app-header></app-header>
+<!--Including navigation bar selector-->
 <app-navbar></app-navbar>
 
+<!--Pop up box to add new stock-->
 <div class="modal fade" id="stockModal" tabindex="-1" role="dialog" aria-labelledby="stockModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -32,11 +35,10 @@
     </div>
   </div>
 </div>
-
-
 <ng4-loading-spinner> </ng4-loading-spinner>
 
-<div *ngIf="stocksToDisplay.length == 0" class="welcomeMessage">
+<!--Content to be displayed when user does not have any stock-->
+<div *ngIf="stocksToDisplay.length == 0" class="welcome-message">
   <div class="empty-message"> 
 Oops, no stocks found! Select the ones you wish to track today!
   </div>
@@ -46,7 +48,7 @@ Oops, no stocks found! Select the ones you wish to track today!
   </button>
   </div>
 </div>
-
+<!--Main content to be displayed when the user has stocks-->
 <div class="placement" *ngIf="stocksToDisplay.length > 0">
   <div class="action-row row float-right">
     <button class="btn btn-primary" data-toggle="modal" (click)="refresh()">
@@ -63,10 +65,6 @@ Oops, no stocks found! Select the ones you wish to track today!
     <thead>
       <tr>
         <th class="text-center">Stock Details</th>
-        <!--<th class="w-10 text-center">Current Price</th>
-        <th class="w-10 text-center">Today's Low</th>
-        <th class="w-10 text-center">Today's High</th>
-        <th class="w-10 text-center">Remove</th>-->
       </tr>
     </thead>
     <tbody *ngFor="let stock of stocksToDisplay">
@@ -90,20 +88,13 @@ Oops, no stocks found! Select the ones you wish to track today!
             </p>
           </details>
         </td>
-        <!--<td class="text-left">{{stock.symbol}}</td>
-        <td class="text-center">{{stock.currentPrice}}</td>
-        <td class="text-center">{{stock.lowPrice}}</td>
-        <td class="text-center">{{stock.highPrice}}</td>
-        <td class="text-center">
-          <button class="btn btn-primary" (click)="deleteStock(stock.stockMappingId)">
-            Del
-          </button>
-        </td>-->
       </tr>
     </tbody>
   </table>
+  <!--Pagination-->
   <div class="float-right">
     <ngb-pagination [collectionSize]="totalLength" (pageChange)="changePage($event)" [(page)]="page" [maxSize]="3" [boundaryLinks]="true"></ngb-pagination>
   </div>
 </div>
+<!--Including footer selector-->
 <app-footer></app-footer>

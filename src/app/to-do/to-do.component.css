@@ -1,23 +1,25 @@
+/*Setting page margin*/
 .placement{
     margin: 5%;
 }
+
+/*Setting style for action row*/
 .action-row{
     padding-bottom: 10px;
 }
 
-.welcomeMessage{
+/*Setting style for welcome message*/
+.welcome-message{
     text-align: center;
     margin: 5%;
-}
+} 
 
- .goal-table{
-/*background: linear-gradient(white,#ccf5ff);*/
- }   
-
+/*Setting style for message shown when there are no goals*/
  .empty-message{
     padding-bottom: 10px;
 }
 
+/*Setting background color for table header*/
 .table-header{
     background-color: #d3d3d3;
 }

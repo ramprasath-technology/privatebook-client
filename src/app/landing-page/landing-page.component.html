@@ -1,12 +1,7 @@
-<!--<div>
-      <img src="../../assets/images/landing/Mascot.png" class="logo-img" style="float:left"><span class="brand"><img src="../../assets/images/landing/PrivateBook.png"></span>
-    </div>-->
-
-<!--<li id="sitename"><img src="Mascot.png" style="float:left"><a href="http://talkerscode.com">PrivateBook</a></li>-->
-<!--<div class="landing-header">   
-<app-landing-header></app-landing-header>
- </div>-->
-<app-landing-header (signinClicked)="showSigninForm($event)"></app-landing-header>
+<!--Including header component-->
+<app-landing-header (signinClicked)="showSigninForm($event)">
+</app-landing-header>
+<!--Main content of the heading page-->
 <div class="container-fluid landing-body main-content">
   <div class="row col-xs-12 landing-caption">
   </div>
@@ -14,20 +9,21 @@
     <div class="main-img-container align-self-center">
       <figure>
         <figcaption class="landing-caption">
-         Manage everything under one roof
-      </figcaption>
-      <img class="main-img " src="../../assets/images/landing/main.jpg" alt="Get all your stuff done in one place" />
-      
+          Manage everything under one roof
+        </figcaption>
+        <img class="main-img " src="../../assets/images/landing/main.jpg" alt="Get all your stuff done in one place" />
+
       </figure>
     </div>
     <div class="form-container">
       <div class="account-form">
+        <!--Including sign up form component-->
         <app-user-signup *ngIf="!accountExists"></app-user-signup>
+        <!--Including sign in form component-->
         <app-user-signin *ngIf="accountExists"></app-user-signin>
-        <!--<span *ngIf="!accountExists">Already a member? <span class="anchor" (click)="showSignIn()">Sign In</span></span>
-        <span *ngIf="accountExists">New member? <span class="anchor" (click)="showSignUp()">Sign Up</span></span>-->
       </div>
     </div>
   </div>
 </div>
+<!--Including component for app footer-->
 <app-footer></app-footer>

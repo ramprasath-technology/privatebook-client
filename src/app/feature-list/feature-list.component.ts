@@ -59,10 +59,6 @@ export class FeatureListComponent implements OnInit {
         this.getWeatherDetails();
       });
     }
-    //testing
-      this.lat = 30.6109;
-      this.lon = -96.3506;
-      this.getWeatherDetails();   
   }
 
   //Getting weather details for current location
